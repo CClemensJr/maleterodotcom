@@ -19,7 +19,7 @@ namespace Maletero
         //support dependency injection
         public Startup(IConfiguration configuration)
         {
-          
+            Configuration = configuration;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -28,8 +28,10 @@ namespace Maletero
         {
             services.AddMvc();
 
+            //services.AddDbContext<MaleteroDbContext>(options =>
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<MaleteroDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration["ConnectionStrings:DefaultConnection"]));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
