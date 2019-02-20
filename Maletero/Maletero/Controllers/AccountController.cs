@@ -23,5 +23,14 @@ namespace Maletero.Controllers
             _userManager = userManager;
             _signInManager = signInManager;
         }
+
+        /// <summary>
+        /// This action directs the user to the View page when the Register route is accessed
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        public IActionResult Register() => View();
+
+
     }
 }
