@@ -11,7 +11,7 @@ namespace Maletero.Data
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         /// <summary>
-        /// This custome constructor is used to bring the DB options into the DbContext
+        /// This custom constructor is used to bring the DB options into the DbContext
         /// </summary>
         /// <param name="options"></param>
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
