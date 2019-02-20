@@ -31,6 +31,10 @@ namespace Maletero.Controllers
         [HttpGet]
         public IActionResult Register() => View();
 
-
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterViewModel rvm)
+        {
+            return View(rvm);
+        }
     }
 }
