@@ -47,6 +47,11 @@ namespace Maletero.Controllers
                 };
 
                 var result = await _userManager.CreateAsync(user, rvm.Password);
+
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                }
             }
 
             return View(rvm);
