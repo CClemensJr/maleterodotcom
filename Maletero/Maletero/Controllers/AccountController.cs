@@ -45,6 +45,8 @@ namespace Maletero.Controllers
                     LastName = rvm.LastName,
                     Birthday = rvm.Birthday
                 };
+
+                var result = await _userManager.CreateAsync(user, rvm.Password);
             }
 
             return View(rvm);
