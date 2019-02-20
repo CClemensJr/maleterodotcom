@@ -35,6 +35,8 @@ namespace Maletero
 
             services.AddDbContext<ApplicationDbContext>(options => 
                                                         options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
+
+            services.AddScoped<IInventory, ProductManagement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
