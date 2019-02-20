@@ -1,4 +1,5 @@
 ﻿using Maletero.Models;
+using Maletero.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -34,6 +35,18 @@ namespace Maletero.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel rvm)
         {
+            if (ModelState.IsValid)
+            {
+                ApplicationUser user = new ApplicationUser()
+                {
+                    UserName = rvm.Email,
+                    Email = rvm.Email,
+                    FirstName = rvm.FirstName,
+                    LastName = rvm.LastName,
+                    Birthday = rvm.Birthday
+                };
+            }
+
             return View(rvm);
         }
     }
