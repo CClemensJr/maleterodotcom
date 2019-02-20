@@ -13,6 +13,12 @@ namespace Maletero.Models.Services
 
         private MaleteroDbContext _context { get; }
 
+        //constructor
+        public ProductManagement(MaleteroDbContext context)
+        {
+            _context = context;
+        }
+
         Task IInventory.CreateProduct(Product product)
         {
             throw new NotImplementedException();
