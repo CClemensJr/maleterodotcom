@@ -38,6 +38,9 @@ namespace Maletero
             services.AddDbContext<MaleteroDbContext>(options => 
                                                      options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
 
+            services.AddDbContext<ApplicationDbContext>(options => 
+                                                        options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
+
             services.AddScoped<IInventory, ProductManagement>();
         }
 
