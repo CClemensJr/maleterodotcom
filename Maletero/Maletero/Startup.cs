@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Maletero.Data;
+using Maletero.Models.Interfaces;
+using Maletero.Models.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -19,6 +21,9 @@ namespace Maletero
         //support dependency injection
         public Startup(IConfiguration configuration)
         {
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            builder.AddUserSecrets<Startup>();
+            Configuration = builder.Build();
             Configuration = configuration;
         }
 
@@ -32,6 +37,8 @@ namespace Maletero
             //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<MaleteroDbContext>(options => 
                                                      options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
+
+            services.AddScoped<IInventory, ProductManagement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
