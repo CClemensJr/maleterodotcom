@@ -77,8 +77,13 @@ namespace Maletero.Controllers
             if (ModelState.IsValid)
             {
                 var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            return View(lvm);
+            return View(login);
         }
     }
 }
