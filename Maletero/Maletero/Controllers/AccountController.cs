@@ -71,6 +71,11 @@ namespace Maletero.Controllers
         [HttpGet]
         public IActionResult Login() => View();
 
+        /// <summary>
+        /// This method takes in the email and password from a form and redirects to a home page if login is valid
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>A View</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         {
