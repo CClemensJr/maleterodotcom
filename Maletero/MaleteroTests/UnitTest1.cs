@@ -91,5 +91,22 @@ namespace MaleteroTests
             product.Description = "productonedescriptionchanged";
             Assert.Equal("productonedescriptionchanged", product.Description);
         }
+
+        [Fact]
+        public void CanGetProductImage()
+        {
+            Product product = new Product();
+            product.Image = "https://via.placeholder.com/150";
+            Assert.Equal("https://via.placeholder.com/150", product.Image);
+        }
+
+        [Fact]
+        public void CanSetProductImage()
+        {
+            Product product = new Product();
+            product.Image = "https://via.placeholder.com/200";
+            product.Image = "https://via.placeholder.com/200";
+            Assert.Equal("https://via.placeholder.com/200", product.Image);
+        }
     }
 }
