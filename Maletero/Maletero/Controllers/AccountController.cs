@@ -61,6 +61,8 @@ namespace Maletero.Controllers
                     Claim birthDateClaim = new Claim(ClaimTypes.DateOfBirth, 
                                                  new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"),                                   ClaimValueTypes.DateTime);
 
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return RedirectToAction("Index", "Home");
