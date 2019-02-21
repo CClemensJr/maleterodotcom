@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Maletero.Controllers
@@ -55,6 +56,8 @@ namespace Maletero.Controllers
 
                 if (result.Succeeded)
                 {
+                    Claim fullNameClaim = new Claim("FullName", $"{ user.FirstName } {user.LastName }");
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return RedirectToAction("Index", "Home");
