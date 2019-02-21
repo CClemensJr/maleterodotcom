@@ -40,6 +40,24 @@ namespace MaleteroTests
             Assert.Equal("abc-456", product.SKU);
         }
 
+        [Fact]
+        public void CanGetProductName()
+        {
+            Product product = new Product();
+            product.Name = "backpack";
+            Assert.Equal("backpack", product.Name);
+        }
+
+        [Fact]
+        public void CanSetProductName()
+        {
+            Product product = new Product();
+            product.Name = "backpack";
+            product.Name = "duffle bag";
+            Assert.Equal("duffle bag", product.Name);
+        }
+
         
+        }
     }
 }
