@@ -57,7 +57,21 @@ namespace MaleteroTests
             Assert.Equal("duffle bag", product.Name);
         }
 
-        
+        [Fact]
+        public void CanGetProductPrice()
+        {
+            Product product = new Product();
+            product.Price = 100.00m;
+            Assert.Equal(100.00m, product.Price);
+        }
+
+        [Fact]
+        public void CanSetProductPrice()
+        {
+            Product product = new Product();
+            product.Price = 100.00m;
+            product.Price = 200.00m;
+            Assert.Equal(200.00m, product.Price);
         }
     }
 }
