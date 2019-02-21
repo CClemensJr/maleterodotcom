@@ -35,10 +35,10 @@ namespace Maletero
         {
             services.AddMvc();
 
-            services.AddDbContext<MaleteroDbContext>(options =>
-            options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
-            //services.AddDbContext<MaleteroDbContext>(options => 
-            //                                         options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
+            //services.AddDbContext<MaleteroDbContext>(options =>
+            //options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
+            services.AddDbContext<MaleteroDbContext>(options => 
+                                                     options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
 
             services.AddDbContext<ApplicationDbContext>(options => 
                                                         options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
