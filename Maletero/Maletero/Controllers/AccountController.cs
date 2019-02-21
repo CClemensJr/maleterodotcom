@@ -58,12 +58,13 @@ namespace Maletero.Controllers
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{ user.FirstName } {user.LastName }");
 
-                    Claim birthDateClaim = new Claim(ClaimTypes.DateOfBirth, 
-                                                 new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"),                                   ClaimValueTypes.DateTime);
+                    Claim birthDateClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"), ClaimValueTypes.DateTime);
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
                     List<Claim> allClaims = new List<Claim> { fullNameClaim, birthDateClaim, emailClaim };
+
+                    await _userManager.AddClaimsAsync(user, allClaims);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
