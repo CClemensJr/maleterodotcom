@@ -18,7 +18,5 @@ namespace Maletero.Data
         {
 
         }
-
-        public DbSet<ApplicationUser> User { get; set; }
     }
 }
