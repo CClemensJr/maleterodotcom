@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Maletero.Models
-@inject SignInManager<ApplicationUser> SignInManager
+@inject SignInManager<ApplicationUser> signInManager
 
 <!DOCTYPE html>
 
@@ -10,6 +10,18 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
+    <div>
+        @if(signInManager.IsSignedIn(User))
+        {
+            <span>Welcome to Maletero @User.Claims.First(c => c.Type == "FullName").Value</span>
+        }
+        else
+        {
+            <p>Please log in or register to access the site</p>
+            <a asp-controller="Account" asp-action="Login">Login</a>
+            <a asp-controller="Account" asp-action="Register">Register</a>
+        }
+    </div>
     <div>
         @RenderBody()
     </div>
