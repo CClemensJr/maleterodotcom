@@ -65,10 +65,16 @@ namespace Maletero.Controllers
         }
 
         /// <summary>
-        /// 
+        /// This action directs the user to the View page when the Login route is accessed
         /// </summary>
         /// <returns>A View page</returns>
         [HttpGet]
         public IActionResult Login() => View();
+
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel lvm)
+        {
+
+        }
     }
 }
