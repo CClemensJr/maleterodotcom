@@ -72,6 +72,24 @@ namespace MaleteroTests
             product.Price = 100.00m;
             product.Price = 200.00m;
             Assert.Equal(200.00m, product.Price);
+
+        }
+
+        [Fact]
+        public void CanGetProductDescription()
+        {
+            Product product = new Product();
+            product.Description = "productonedescription";
+            Assert.Equal("productonedescription", product.Description);
+        }
+
+        [Fact]
+        public void CanSetProductDescription()
+        {
+            Product product = new Product();
+            product.Description = "productonedescription";
+            product.Description = "productonedescriptionchanged";
+            Assert.Equal("productonedescriptionchanged", product.Description);
         }
     }
 }
