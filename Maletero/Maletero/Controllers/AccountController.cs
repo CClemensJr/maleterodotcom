@@ -28,12 +28,12 @@ namespace Maletero.Controllers
         /// <summary>
         /// This action directs the user to the View page when the Register route is accessed
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A View page</returns>
         [HttpGet]
         public IActionResult Register() => View();
 
         /// <summary>
-        /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects wd to the home page
+        /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects to the home page
         /// </summary>
         /// <param name="rvm"></param>
         /// <returns>A view action result</returns>
@@ -63,5 +63,12 @@ namespace Maletero.Controllers
 
             return View(rvm);
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns>A View page</returns>
+        [HttpGet]
+        public IActionResult Login() => View();
     }
 }
