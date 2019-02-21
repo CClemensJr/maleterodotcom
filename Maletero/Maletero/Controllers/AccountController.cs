@@ -28,30 +28,30 @@ namespace Maletero.Controllers
         /// <summary>
         /// This action directs the user to the View page when the Register route is accessed
         /// </summary>
-        /// <returns></returns>
+        /// <returns>A View page</returns>
         [HttpGet]
         public IActionResult Register() => View();
 
         /// <summary>
-        /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects wd to the home page
+        /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects to the home page
         /// </summary>
         /// <param name="rvm"></param>
         /// <returns>A view action result</returns>
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel rvm)
+        public async Task<IActionResult> Register(RegisterViewModel register)
         {
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = rvm.Email,
-                    Email = rvm.Email,
-                    FirstName = rvm.FirstName,
-                    LastName = rvm.LastName,
-                    Birthday = rvm.Birthday
+                    UserName = register.Email,
+                    Email = register.Email,
+                    FirstName = register.FirstName,
+                    LastName = register.LastName,
+                    Birthday = register.Birthday
                 };
 
-                var result = await _userManager.CreateAsync(user, rvm.Password);
+                var result = await _userManager.CreateAsync(user, register.Password);
 
                 if (result.Succeeded)
                 {
@@ -61,7 +61,37 @@ namespace Maletero.Controllers
                 }
             }
 
-            return View(rvm);
+            return View(register);
+        }
+
+        /// <summary>
+        /// This action directs the user to the View page when the Login route is accessed
+        /// </summary>
+        /// <returns>A View page</returns>
+        [HttpGet]
+        public IActionResult Login() => View();
+
+        /// <summary>
+        /// This method takes in the email and password from a form and redirects to a home page if login is valid
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>A View</returns>
+        [HttpPost]
+        public async Task<IActionResult> Login(LoginViewModel login)
+        {
+            if (ModelState.IsValid)
+            {
+                var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
+
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            ModelState.AddModelError(string.Empty, "Invalid Login");
+
+            return View(login);
         }
     }
 }
