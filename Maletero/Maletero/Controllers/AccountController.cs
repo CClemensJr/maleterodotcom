@@ -63,6 +63,8 @@ namespace Maletero.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
+                    List<Claim> allClaims = new List<Claim> { fullNameClaim, birthDateClaim, emailClaim };
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     return RedirectToAction("Index", "Home");
