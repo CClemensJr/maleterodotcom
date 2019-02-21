@@ -83,6 +83,9 @@ namespace Maletero.Controllers
                     return RedirectToAction("Index", "Home");
                 }
             }
+
+            ModelState.AddModelError(string.Empty, "Invalid Login");
+
             return View(login);
         }
     }
