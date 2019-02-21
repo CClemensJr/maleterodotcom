@@ -38,20 +38,20 @@ namespace Maletero.Controllers
         /// <param name="rvm"></param>
         /// <returns>A view action result</returns>
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel rvm)
+        public async Task<IActionResult> Register(RegisterViewModel register)
         {
             if (ModelState.IsValid)
             {
                 ApplicationUser user = new ApplicationUser()
                 {
-                    UserName = rvm.Email,
-                    Email = rvm.Email,
-                    FirstName = rvm.FirstName,
-                    LastName = rvm.LastName,
-                    Birthday = rvm.Birthday
+                    UserName = register.Email,
+                    Email = register.Email,
+                    FirstName = register.FirstName,
+                    LastName = register.LastName,
+                    Birthday = register.Birthday
                 };
 
-                var result = await _userManager.CreateAsync(user, rvm.Password);
+                var result = await _userManager.CreateAsync(user, register.Password);
 
                 if (result.Succeeded)
                 {
@@ -61,7 +61,7 @@ namespace Maletero.Controllers
                 }
             }
 
-            return View(rvm);
+            return View(register);
         }
 
         /// <summary>
@@ -72,11 +72,11 @@ namespace Maletero.Controllers
         public IActionResult Login() => View();
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel lvm)
+        public async Task<IActionResult> Login(LoginViewModel login)
         {
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(lvm.Email, lvm.Password, false, false);
+                var result = await _signInManager.PasswordSignInAsync(login.Email, login.Password, false, false);
             }
             return View(lvm);
         }
