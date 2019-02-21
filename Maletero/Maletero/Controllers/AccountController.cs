@@ -33,7 +33,7 @@ namespace Maletero.Controllers
         public IActionResult Register() => View();
 
         /// <summary>
-        /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects them to the home page
+        /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects wd to the home page
         /// </summary>
         /// <param name="rvm"></param>
         /// <returns>A view action result</returns>
