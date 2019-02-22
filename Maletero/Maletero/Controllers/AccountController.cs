@@ -49,7 +49,8 @@ namespace Maletero.Controllers
                     Email = register.Email,
                     FirstName = register.FirstName,
                     LastName = register.LastName,
-                    Birthday = register.Birthday
+                    Birthday = register.Birthday,
+                    State = register.State
                 };
 
                 var result = await _userManager.CreateAsync(user, register.Password);
@@ -61,6 +62,8 @@ namespace Maletero.Controllers
                     Claim birthDateClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"), ClaimValueTypes.DateTime);
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State.ToString());
 
                     List<Claim> allClaims = new List<Claim> { fullNameClaim, birthDateClaim, emailClaim };
 

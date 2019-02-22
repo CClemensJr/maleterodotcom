@@ -4,8 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Maletero.Data;
 using Maletero.Models;
+using Maletero.Models.Handler;
 using Maletero.Models.Interfaces;
 using Maletero.Models.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -48,6 +50,14 @@ namespace Maletero
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement("WA")));
+            });
+
+            //dependency injection
+            services.AddScoped<IAuthorizationHandler, StateRequirement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
