@@ -19,6 +19,10 @@
     <input asp-for="Birthday" />
     <span asp-validation-for="Birthday"></span>
 
+    <label asp-for="State"></label>
+    <select asp-for="State" class="form-control" asp-items="@Html.GetEnumSelectList<Maletero.Models.ViewModels.State>()"></select>
+    <span asp-validation-for="State"></span>
+
     <label asp-for="Password"></label>
     <input asp-for="Password" />
     <span asp-validation-for="Password"></span>

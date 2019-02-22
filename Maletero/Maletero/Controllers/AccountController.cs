@@ -49,7 +49,8 @@ namespace Maletero.Controllers
                     Email = register.Email,
                     FirstName = register.FirstName,
                     LastName = register.LastName,
-                    Birthday = register.Birthday
+                    Birthday = register.Birthday,
+                    State = register.State
                 };
 
                 var result = await _userManager.CreateAsync(user, register.Password);
