@@ -63,6 +63,8 @@ namespace Maletero.Controllers
 
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
 
+                    Claim stateClaim = new Claim(ClaimTypes.StateOrProvince, user.State.ToString());
+
                     List<Claim> allClaims = new List<Claim> { fullNameClaim, birthDateClaim, emailClaim };
 
                     await _userManager.AddClaimsAsync(user, allClaims);
