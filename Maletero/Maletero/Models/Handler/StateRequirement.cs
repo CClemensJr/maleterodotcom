@@ -8,5 +8,11 @@ namespace Maletero.Models.Handler
 {
     public class StateRequirement : AuthorizationHandler<StateRequirement>, IAuthorizationRequirement
     {
+        private string _state;
+
+        public StateRequirement(string state)
+        {
+            _state = state;
+        }
     }
 }
