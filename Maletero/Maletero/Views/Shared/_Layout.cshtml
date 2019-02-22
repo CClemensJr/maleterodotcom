@@ -7,11 +7,14 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
     <div>
-        @if(signInManager.IsSignedIn(User))
+        @if (signInManager.IsSignedIn(User))
         {
             <span>Welcome to Maletero @User.Claims.First(c => c.Type == "FullName").Value</span>
         }
@@ -19,9 +22,18 @@
         {
             <p>Please log in or register to access the site</p>
             <a asp-controller="Account" asp-action="Login">Login</a>
-            <a asp-controller="Account" asp-action="Register">Register</a>
+            @*<a asp-controller="Account" asp-action="Register">Register</a>*@
         }
     </div>
+    <header>
+        <nav class="navbar navbar-dark bg-dark">
+            <a href="/" class="navbar-brand">Nav Item</a>
+            <a href="/" class="navbar-brand">Nav Item</a>
+            <a href="/" class="navbar-brand">Nav Item</a>
+            <a href="/" class="navbar-brand">Nav Item</a>
+            <a href="/" class="navbar-brand">Nav Item</a>
+        </nav>
+    </header>
     <div>
         @RenderBody()
     </div>
