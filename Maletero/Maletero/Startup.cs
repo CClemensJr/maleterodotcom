@@ -56,6 +56,7 @@ namespace Maletero
                 options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement("WA")));
             });
 
+            //dependency injection
             services.AddScoped<IAuthorizationHandler, StateRequirement>();
         }
 
