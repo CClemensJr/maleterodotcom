@@ -13,8 +13,8 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <h1>Maletero Bags</h1>
-    <p>The finest quality bags for any activity, since 1916!</p>
+    <h1>Maletero</h1>
+    <p>Storing the finest quality bags for any journey, since 1916!</p>
     <header>
         <nav class="navbar navbar-dark bg-dark">
             <a href="/" class="navbar-brand">Nav Item</a>
@@ -29,9 +29,7 @@
                 }
                 else
                 {
-                    <p>Please log in or register</p>
-                    <a asp-controller="Account" asp-action="Login">Login</a>
-                    <a asp-controller="Account" asp-action="Register">Register</a>
+                    <p>Please <a asp-controller="Account" asp-action="Login">Login</a> or <a asp-controller="Account" asp-action="Register">Register</a></p>
                 }
             </div>
         </nav>
