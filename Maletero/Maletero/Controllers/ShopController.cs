@@ -10,5 +10,10 @@ namespace Maletero.Controllers
     public class ShopController : Controller
     {
         private readonly IInventory _inventory;
+
+        public ShopController(IInventory inventory)
+        {
+            _inventory = inventory;
+        }
     }
 }
