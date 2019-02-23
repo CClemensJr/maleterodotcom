@@ -2,6 +2,23 @@
     background-color: #251006;
     text-align: center;
     color: white;
+    /*font-family: 'EB Garamond', serif;*/
+    /*font-family: 'Alegreya', serif;*/
+    /*font-family: 'cardo', serif;*/
+    font-family: 'Cormorant Garamond', serif;
+}
+
+h1 {
+    font-family: 'Playfair Display SC', serif;
+    font-size: 8vh;
+}
+
+h4 {
+    font-family: 'Playfair Display SC', serif;
+}
+
+.homelinks{
+    text-align: right;
 }
 
 .container {
@@ -15,10 +32,10 @@
     /*border-radius: 20px;*/
     text-align: center;
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.9);
-    border: 3px solid rgba(0, 0, 0, 0.8);
-    margin: 1em;
-    padding: 1em;
+    /*background-color: rgba(255, 255, 255, 0.9);*/
+    /*border: 3px solid rgba(0, 0, 0, 0.8);*/
+    /*margin: 1em;
+    padding: 1em;*/
 }
 
 .stateEnum{
