@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace Maletero.Controllers
 {
-    public class ShopController
+    public class ShopController : Controller
     {
+
     }
 }
