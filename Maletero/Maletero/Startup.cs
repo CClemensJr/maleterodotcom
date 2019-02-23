@@ -58,6 +58,7 @@ namespace Maletero
 
             //dependency injection
             services.AddScoped<IAuthorizationHandler, StateRequirement>();
+            services.AddTransient<ProductManagement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
