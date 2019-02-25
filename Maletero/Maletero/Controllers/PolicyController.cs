@@ -14,5 +14,11 @@ namespace Maletero.Controllers
         {
             return View();
         }
+
+        [Authorize]
+        public IActionResult SeahawkBags()
+        {
+            return View();
+        }
     }
 }
