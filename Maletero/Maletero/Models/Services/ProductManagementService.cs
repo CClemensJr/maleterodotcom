@@ -30,6 +30,10 @@ namespace Maletero.Models.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// This interface method gathers all of the objects in the table and returns them in a list
+        /// </summary>
+        /// <returns>A list of objects</returns>
         public async Task<IEnumerable<Product>> GetAll()
         {
             return await _context.Products.ToListAsync();
