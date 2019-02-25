@@ -1,36 +1,67 @@
 ﻿@model Maletero.Models.ViewModels.RegisterViewModel
 
-<form method="post">
-    <div asp-validation-summary="All"></div>
+@{
+    Layout = "_Layout";
+}
 
-    <label asp-for="Email"></label>
-    <input asp-for="Email" />
-    <span asp-validation-for="Email"></span>
 
-    <label asp-for="FirstName"></label>
-    <input asp-for="FirstName" />
-    <span asp-validation-for="FirstName"></span>
 
-    <label asp-for="LastName"></label>
-    <input asp-for="LastName" />
-    <span asp-validation-for="LastName"></span>
+    <br />
+    <h4>Register:</h4>
+    <body>
+        <div class="container">
+            <div class="item">
+                <form method="post">
 
-    <label asp-for="Birthday"></label>
-    <input asp-for="Birthday" />
-    <span asp-validation-for="Birthday"></span>
+                    <div asp-validation-summary="All"></div>
+                    <div>
+                        <label asp-for="Email"></label>
+                        <input asp-for="Email" />
+                        <span asp-validation-for="Email"></span>
+                    </div>
 
-    <label asp-for="State"></label>
-    <select asp-for="State" class="form-control" asp-items="@Html.GetEnumSelectList<Maletero.Models.ViewModels.State>()"></select>
-    <span asp-validation-for="State"></span>
+                    <div>
+                        <label asp-for="FirstName"></label>
+                        <input asp-for="FirstName" />
+                        <span asp-validation-for="FirstName"></span>
+                    </div>
 
-    <label asp-for="Password"></label>
-    <input asp-for="Password" />
-    <span asp-validation-for="Password"></span>
+                    <div>
+                        <label asp-for="LastName"></label>
+                        <input asp-for="LastName" />
+                        <span asp-validation-for="LastName"></span>
+                    </div>
 
-    <label asp-for="ConfirmPassword"></label>
-    <input asp-for="ConfirmPassword" />
-    <span asp-validation-for="ConfirmPassword"></span>
+                    <div>
+                        <label asp-for="Birthday"></label>
+                        <input asp-for="Birthday" />
+                        <span asp-validation-for="Birthday"></span>
+                    </div>
 
-    <button type="submit">Sign up</button>
+                    <div class="stateEnum">
+                        <label asp-for="State"></label>
+                        <select asp-for="State" class="form-control" asp-items="@Html.GetEnumSelectList<Maletero.Models.ViewModels.State>()"></select>
+                        <span asp-validation-for="State"></span>
+                    </div>
 
-</form>
+                    <div>
+                        <label asp-for="Password"></label>
+                        <input asp-for="Password" />
+                        <span asp-validation-for="Password"></span>
+                    </div>
+
+                    <div>
+                        <label asp-for="ConfirmPassword"></label>
+                        <input asp-for="ConfirmPassword" />
+                        <span asp-validation-for="ConfirmPassword"></span>
+                    </div>
+
+                    <div>
+                        <button type="submit">Sign up</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+
+

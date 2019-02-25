@@ -9,12 +9,14 @@
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Old+Standard+TT|Playfair+Display+SC|Vidaloka" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Alegreya|Cardo|Cormorant+Garamond|EB+Garamond" rel="stylesheet">
     <link href="~/StyleSheet.css" rel="stylesheet" />
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <h1>Maletero Bags</h1>
-    <p>The finest quality bags for any activity, since 1916!</p>
+    <h1>Maletero</h1>
+    <p>Storing the finest quality bags for any journey, since 1916!</p>
     <header>
         <nav class="navbar navbar-dark bg-dark">
             <a href="/" class="navbar-brand">Nav Item</a>
@@ -25,13 +27,11 @@
             <div>
                 @if (signInManager.IsSignedIn(User))
                 {
-                    <span>Welcome to Maletero @User.Claims.First(c => c.Type == "FullName").Value</span>
+                    <span>Welcome to Maletero, @User.Claims.First(c => c.Type == "FullName").Value!</span>
                 }
                 else
                 {
-                    <p>Please log in or register</p>
-                    <a asp-controller="Account" asp-action="Login">Login</a>
-                    <a asp-controller="Account" asp-action="Register">Register</a>
+                    <p>Please <a asp-controller="Account" asp-action="Login">Login</a> or <a asp-controller="Account" asp-action="Register">Register</a></p>
                 }
             </div>
         </nav>
