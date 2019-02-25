@@ -11,11 +11,19 @@ namespace Maletero.Controllers
     {
         private readonly IInventory _context;
 
+        /// <summary>
+        /// This custom constructor brings in the db
+        /// </summary>
+        /// <param name="context"></param>
         public ProductController(IInventory context)
         {
             _context = context;
         }
 
+        /// <summary>
+        /// This action returns the index view
+        /// </summary>
+        /// <returns>A View</returns>
         public IActionResult Index()
         {
             return View();
