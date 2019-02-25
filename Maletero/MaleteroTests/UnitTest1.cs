@@ -1,3 +1,4 @@
+using Maletero.Models;
 using Maletero.Models.Interfaces;
 using System;
 using Xunit;
