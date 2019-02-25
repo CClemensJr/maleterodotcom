@@ -23,7 +23,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// This action returns the index view
         /// </summary>
-        /// <returns>A View</returns>
+        /// <returns>A View</returns> 
         public IActionResult Index()
         {
             return View();
