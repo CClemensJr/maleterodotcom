@@ -1,9 +1,21 @@
 ﻿@using Maletero.Models
 @using Maletero.Models.Services
-@model Maletero.Models.Interfaces.Product
+@model IEnumerable<Maletero.Models.Interfaces.Product>
 
-@inject ProductManagement ProductService
+@inject ProductManagement Service
 
 @{
+    ViewData["Title"] = "Maletero Bags";
     Layout = "_Layout";
 }
+
+<div class="container">
+    @foreach (var product in Model)
+    {
+        @Html.DisplayFor(modelItem => product.Image);
+        @Html.DisplayFor(modelItem => product.Name);
+        @Html.DisplayFor(modelItem => product.Description);
+        @Html.DisplayFor(modelItem => product.Price);
+        <hr />
+    }
+</div>
