@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Maletero.Models;
 using Maletero.Models.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
