@@ -31,5 +31,15 @@ namespace Maletero.Controllers
         {
             return View(await _inventory.GetAll());
         }
+
+        /// <summary>
+        /// This method renders the View for authorized logged in users
+        /// </summary>
+        /// <returns>A View</returns>
+        [Authorize]
+        public IActionResult SeahawkBags()
+        {
+            return View();
+        }
     }
 }
