@@ -10,27 +10,27 @@ namespace Maletero.Models.Handler
 {
     public class StateRequirement : AuthorizationHandler<StateRequirement>, IAuthorizationRequirement
     {
-        private string _preferredState;
+        //private string _preferredState;
 
-        //allows you to select a preferred state to apply similiar to minimum age req
-        public StateRequirement(string preferredState)
-        {
-            _preferredState = preferredState;
-        }
+        ////allows you to select a preferred state to apply similiar to minimum age req
+        //public StateRequirement(string preferredState)
+        //{
+        //    _preferredState = preferredState;
+        //}
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, StateRequirement requirement)
         {
             //req is based on state claim
             //if the user does not have a state attached, complete the task
-            if(!context.User.HasClaim(c => c.Type == ClaimTypes.StateOrProvince.ToString()))
+            if(!context.User.HasClaim(c => c.Type == ClaimTypes.StateOrProvince))
             {
                 return Task.CompletedTask;
             }
 
-            var state = context.User.FindFirst(u => u.Type == ClaimTypes.StateOrProvince);
-            string selectedState = "WA";
+            var state = context.User.FindFirst(u => u.Type == ClaimTypes.StateOrProvince).Value;
+            //string selectedState = _preferredState;
 
-            if(state.Value == selectedState)
+            if(state == "WA")
             {
                 context.Succeed(requirement);
             }

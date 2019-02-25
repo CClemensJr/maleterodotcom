@@ -1,4 +1,5 @@
 ﻿using Maletero.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Maletero.Controllers
 {
+    [Authorize(Policy = "WashingtonStateOnly")]
     public class ShopController : Controller
     {
         private readonly IInventory _inventory;
@@ -25,9 +27,20 @@ namespace Maletero.Controllers
         /// </summary>
         /// <returns>A View</returns>
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _inventory.GetAll());
+        }
+
+        /// <summary>
+        /// This method renders the View for authorized logged in users
+        /// </summary>
+        /// <returns>A View</returns>
+        [Authorize]
+        public IActionResult SeahawkBags()
+        {
+            return View();
         }
     }
 }

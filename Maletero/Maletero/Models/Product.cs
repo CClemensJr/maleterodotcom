@@ -1,4 +1,4 @@
-﻿namespace Maletero.Models.Interfaces
+﻿namespace Maletero.Models
 {
     public class Product
     {
