@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Maletero.Controllers
 {
     /// <summary>
-    /// 
+    /// This action returns the view index
     /// </summary>
     public class HomeController : Controller
     {
