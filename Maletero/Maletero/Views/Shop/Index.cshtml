@@ -12,10 +12,11 @@
 <div class="container">
     @foreach (var product in Model)
     {
-        @Html.DisplayFor(modelItem => product.Image);
-        @Html.DisplayFor(modelItem => product.Name);
-        @Html.DisplayFor(modelItem => product.Description);
-        @Html.DisplayFor(modelItem => product.Price);
+        <img src="@product.Image" />
+        <h1>@product.Name</h1>
+        <p>@product.Description</p>
+        <p>@product.Price</p>
+        <button>Add to cart</button>
         <hr />
     }
 </div>
