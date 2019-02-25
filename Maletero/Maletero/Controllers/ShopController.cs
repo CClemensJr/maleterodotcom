@@ -21,7 +21,7 @@ namespace Maletero.Controllers
         }
 
         /// <summary>
-        /// This method renders the view page when the index route is hit.
+        /// This method renders the view page when the index route is hit while sending all of the table items with it.
         /// </summary>
         /// <returns>A View</returns>
         [HttpGet]
