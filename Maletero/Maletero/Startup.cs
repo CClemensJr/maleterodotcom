@@ -45,7 +45,6 @@ namespace Maletero
             services.AddDbContext<ApplicationDbContext>(options => 
                                                         options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
 
-            services.AddScoped<IInventory, ProductManagement>();
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -53,19 +52,20 @@ namespace Maletero
 
             services.AddAuthorization(options =>
             {
-                options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement("WA")));
+                options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement()));
             });
 
             //dependency injection
-            services.AddScoped<IAuthorizationHandler, StateRequirement>();
+            services.AddScoped<IInventory, ProductManagement>();
             services.AddTransient<ProductManagement>();
+            services.AddScoped<IAuthorizationHandler, StateRequirement>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
-            app.UseAuthentication();
             app.UseStaticFiles();
+            app.UseAuthentication();
 
             if (env.IsDevelopment())
             {
