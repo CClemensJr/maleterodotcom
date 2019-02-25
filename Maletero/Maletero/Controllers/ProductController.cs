@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Maletero.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Maletero.Controllers
 {
+    [AllowAnonymous]
     public class ProductController : Controller
     {
         private readonly IInventory _context;

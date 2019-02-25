@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Maletero.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class HomeController : Controller
     {
         public IActionResult Index()
