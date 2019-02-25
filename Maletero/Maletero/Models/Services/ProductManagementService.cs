@@ -1,5 +1,6 @@
 ﻿using Maletero.Data;
 using Maletero.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +30,9 @@ namespace Maletero.Models.Services
             throw new NotImplementedException();
         }
 
-        Task<IEnumerable<Product>> IInventory.GetAll()
+        public async Task<IEnumerable<Product>> GetAll()
         {
-            throw new NotImplementedException();
+            return await _context.Products.ToListAsync();
         }
 
         Task<Product> IInventory.GetbyID(int? id)
