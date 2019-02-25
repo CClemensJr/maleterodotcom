@@ -1,1 +1,15 @@
-﻿<h1>Here there be seahawk bags for WA residents only!</h1>
+﻿@using Maletero.Models
+@using Maletero.Models.Services
+@model IEnumerable<Maletero.Models.Product>
+
+@inject ProductManagement Service
+
+@{
+    ViewData["Title"] = "Maletero Seahawk Bags";
+    Layout = "_Layout";
+}
+
+<div class="container">
+    <h1>Here there be seahawk bags for WA residents only!</h1>
+</div>
+
