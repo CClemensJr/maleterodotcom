@@ -10,6 +10,9 @@ namespace Maletero.Controllers
     [Authorize(Policy = "WashingtonStateOnly")]
     public class PolicyController : Controller
     {
-
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
