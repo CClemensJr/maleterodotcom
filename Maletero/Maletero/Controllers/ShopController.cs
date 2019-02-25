@@ -25,9 +25,9 @@ namespace Maletero.Controllers
         /// </summary>
         /// <returns>A View</returns>
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            return View(await _inventory.GetAll());
         }
     }
 }
