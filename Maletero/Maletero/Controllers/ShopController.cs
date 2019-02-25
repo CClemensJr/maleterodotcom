@@ -1,4 +1,5 @@
 ﻿using Maletero.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Maletero.Controllers
 {
+    [Authorize(Policy = "WashingtonStateOnly")]
     public class ShopController : Controller
     {
         private readonly IInventory _inventory;
