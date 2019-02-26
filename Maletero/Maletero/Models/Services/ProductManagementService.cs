@@ -20,12 +20,12 @@ namespace Maletero.Models.Services
             _context = context;
         }
 
-        Task CreateProduct(Product product)
+        public async Task CreateProduct(Product product)
         {
             throw new NotImplementedException();
         }
 
-        Task DeleteProduct(int id)
+        public Task DeleteProduct(int id)
         {
             throw new NotImplementedException();
         }
@@ -49,12 +49,12 @@ namespace Maletero.Models.Services
             return await _context.Products.FindAsync(id);
         }
 
-        bool ProductExists(int id)
+        public bool ProductExists(int id)
         {
             throw new NotImplementedException();
         }
 
-        Task UpdateProduct(Product id)
+        public async Task UpdateProduct(Product id)
         {
             throw new NotImplementedException();
         }
