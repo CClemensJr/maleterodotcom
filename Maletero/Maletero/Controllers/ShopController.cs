@@ -33,6 +33,11 @@ namespace Maletero.Controllers
             return View(await _inventory.GetAll());
         }
 
+        /// <summary>
+        /// This action takes an id and sends the user to the view page for that id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A View</returns>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> View(int id)
