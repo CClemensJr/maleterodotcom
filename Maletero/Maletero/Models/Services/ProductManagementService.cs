@@ -39,6 +39,11 @@ namespace Maletero.Models.Services
             return await _context.Products.ToListAsync();
         }
 
+        /// <summary>
+        /// THis method finds an object in the db with the associated ID and returns it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A Product object</returns>
         public async Task<Product> GetbyID(int id)
         {
             return await _context.Products.FindAsync(id);
