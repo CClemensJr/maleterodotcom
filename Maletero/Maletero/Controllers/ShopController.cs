@@ -35,9 +35,9 @@ namespace Maletero.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> View()
+        public async Task<IActionResult> View(int id)
         {
-            return await View();
+            return View(await _inventory.GetbyID(id));
         }
 
         /// <summary>
