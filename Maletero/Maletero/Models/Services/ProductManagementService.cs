@@ -39,7 +39,7 @@ namespace Maletero.Models.Services
             return await _context.Products.ToListAsync();
         }
 
-        Task<Product> IInventory.GetbyID(int? id)
+        public async Task<Product> IInventory.GetbyID(int id)
         {
             throw new NotImplementedException();
         }
