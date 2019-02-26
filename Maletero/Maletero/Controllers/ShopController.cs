@@ -33,6 +33,13 @@ namespace Maletero.Controllers
             return View(await _inventory.GetAll());
         }
 
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> View()
+        {
+            return await View();
+        }
+
         /// <summary>
         /// This method renders the View for authorized logged in users
         /// </summary>
