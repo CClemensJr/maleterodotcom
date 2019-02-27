@@ -109,5 +109,12 @@ namespace Maletero.Controllers
 
             return View(login);
         }
+
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
