@@ -160,9 +160,39 @@ namespace Maletero.Controllers
                 return RedirectToAction("Index", "Home");
             }
 
+            //get email if this is the first request
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
 
-            return View("ExternalLogin", ExternalLoginViewModel);
+            //redirect to external login for the user to log in
+            return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+        }
+
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var info = await _signInManager.GetExternalLoginInfoAsync();
+                if (info == null)
+                {
+                    TempData["Error"] = "Loading error";
+                }
+
+                //create a user
+                var user = new ApplicationUser { UserName = elvm.Email, Email = elvm.Email };
+                var result = await _userManager.CreateAsync(user);
+                
+                if(result.Succeeded)
+                {
+                    result = await _userManager.AddLoginAsync(user, info);
+
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+            return View(elvm);
         }
     }
 }
