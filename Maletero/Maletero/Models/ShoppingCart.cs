@@ -25,5 +25,6 @@ namespace Maletero.Models
         [Display(Name = "Number of Items")]
         public int ProductQuantity { get; set; }
         
+        public ICollection<Product> Products { get; set; }
     }
 }
