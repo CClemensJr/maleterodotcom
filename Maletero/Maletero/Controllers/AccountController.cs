@@ -110,11 +110,24 @@ namespace Maletero.Controllers
             return View(login);
         }
 
+        /// <summary>
+        /// this method allows the user to logout out of their account
+        /// </summary>
+        /// <returns>returns to home page upon logout</returns>
         [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
+        public IActionResult ExternalLogin(string serviceprovider)
+        {
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(serviceprovider, redirectUrl);
+
+            return Challenge(properties, serviceprovider);
         }
     }
 }
