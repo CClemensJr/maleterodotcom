@@ -1,4 +1,5 @@
-﻿using Maletero.Models.Interfaces;
+﻿using Maletero.Models;
+using Maletero.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -53,6 +54,14 @@ namespace Maletero.Controllers
         public IActionResult SeahawkBags()
         {
             return View();
+        }
+
+
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult>View([Bind("ID,Image,Name,Description,Price")] Product product)
+        {
+            return View("Index");
         }
     }
 }
