@@ -52,6 +52,12 @@ namespace Maletero
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
+            services.AddAuthentication()
+                .AddGoogle(google =>
+                {
+                    google.ClientId = Configuration["Authentication:Google:ClientId"];
+                    google.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement()));
