@@ -13,9 +13,9 @@
 <div class="container">
     <form method="post">
         <img src="@Model.Image" />
-        <label asp-for="@Model.Name"></label>
-        <label asp-for="@Model.Description"></label>
-        <label asp-for="@Model.Price"></label>
+        <label asp-for="@Model.Name">@Model.Name</label>
+        <label asp-for="@Model.Description">@Model.Description</label>
+        <label asp-for="@Model.Price">@Model.Price</label>
         <button type="submit">Add to cart</button>
     </form>
 </div>
