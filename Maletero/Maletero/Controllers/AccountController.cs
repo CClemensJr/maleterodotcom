@@ -148,6 +148,14 @@ namespace Maletero.Controllers
                 return RedirectToAction(nameof(Login));
             }
 
+            //login with the external provider using the info from the sign in manager
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+
+            //if login is successful, redirect to home page
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }
