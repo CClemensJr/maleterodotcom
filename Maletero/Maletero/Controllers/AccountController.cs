@@ -121,13 +121,33 @@ namespace Maletero.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        [HttpPost]
         public IActionResult ExternalLogin(string serviceprovider)
         {
             var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(serviceprovider, redirectUrl);
-
+            
+            //challenge starts the grant access process
+            //return of challenge redirects to callback url
             return Challenge(properties, serviceprovider);
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ExternalLoginCallback(string error = null)
+        {
+            if(error != null)
+            {
+                TempData["Error"] = "Service Provider Error";
+                return RedirectToAction("Login");
+            }
+
+            //verify that the app supports the service provider
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            if (info ==  null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
         }
     }
 }
