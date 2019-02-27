@@ -22,7 +22,7 @@ namespace Maletero.Models
         public Product ProductID { get; set; }
 
         [Required]
-        [Display(Name = "Number of Items"]
+        [Display(Name = "Number of Items")]
         public int ProductQuantity { get; set; }
         
     }
