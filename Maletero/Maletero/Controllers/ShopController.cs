@@ -55,17 +55,5 @@ namespace Maletero.Controllers
         {
             return View();
         }
-
-
-        [HttpPost]
-        [AllowAnonymous]
-        public async Task<IActionResult>ShowBag([Bind("ID,Image,Name,Description,Price")] Product product)
-        {
-            if (ModelState.IsValid)
-            {
-
-            }
-            return View("Index");
-        }
     }
 }
