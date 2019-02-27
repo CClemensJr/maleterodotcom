@@ -14,7 +14,7 @@ namespace Maletero.Models
 
         [Required]
         [EmailAddress]
-        public int UserID { get; set; }
+        public string UserID { get; set; }
 
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
     }
