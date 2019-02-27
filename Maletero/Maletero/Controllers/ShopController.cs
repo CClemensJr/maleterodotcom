@@ -34,6 +34,18 @@ namespace Maletero.Controllers
         }
 
         /// <summary>
+        /// This action takes an id and sends the user to the view page for that id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A View</returns>
+        [HttpGet]
+        [AllowAnonymous]
+        public async Task<IActionResult> View(int id)
+        {
+            return View(await _inventory.GetbyID(id));
+        }
+
+        /// <summary>
         /// This method renders the View for authorized logged in users
         /// </summary>
         /// <returns>A View</returns>

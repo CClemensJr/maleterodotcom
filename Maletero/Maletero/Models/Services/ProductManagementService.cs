@@ -20,12 +20,12 @@ namespace Maletero.Models.Services
             _context = context;
         }
 
-        Task IInventory.CreateProduct(Product product)
+        public async Task CreateProduct(Product product)
         {
             throw new NotImplementedException();
         }
 
-        Task IInventory.DeleteProduct(int id)
+        public Task DeleteProduct(int id)
         {
             throw new NotImplementedException();
         }
@@ -39,17 +39,22 @@ namespace Maletero.Models.Services
             return await _context.Products.ToListAsync();
         }
 
-        Task<Product> IInventory.GetbyID(int? id)
+        /// <summary>
+        /// THis method finds an object in the db with the associated ID and returns it
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A Product object</returns>
+        public async Task<Product> GetbyID(int id)
+        {
+            return await _context.Products.FindAsync(id);
+        }
+
+        public bool ProductExists(int id)
         {
             throw new NotImplementedException();
         }
 
-        bool IInventory.ProductExists(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        Task IInventory.UpdateProduct(Product id)
+        public async Task UpdateProduct(Product id)
         {
             throw new NotImplementedException();
         }

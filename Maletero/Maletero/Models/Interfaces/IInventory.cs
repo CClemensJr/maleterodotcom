@@ -12,7 +12,7 @@ namespace Maletero.Models.Interfaces
 
         //read
 
-        Task<Product> GetbyID(int? id);
+        Task<Product> GetbyID(int id);
 
         Task<IEnumerable<Product>> GetAll();
 

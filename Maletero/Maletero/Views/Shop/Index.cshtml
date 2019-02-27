@@ -15,8 +15,8 @@
     {
         <img src="@product.Image" />
         <h1>@product.Name</h1>
-        <p>@product.Description</p>
         <p>@product.Price</p>
+        <button><a asp-controller="Shop" asp-action="View" asp-route-id="@product.ID">More Info</a></button>
         <button>Add to cart</button>
         <hr />
     }
