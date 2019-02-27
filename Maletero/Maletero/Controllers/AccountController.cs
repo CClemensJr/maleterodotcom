@@ -109,5 +109,100 @@ namespace Maletero.Controllers
 
             return View(login);
         }
+
+        /// <summary>
+        /// this method allows the user to logout out of their account
+        /// </summary>
+        /// <returns>returns to home page upon logout</returns>
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
+
+        public IActionResult ExternalLogin(string serviceprovider)
+        {
+            var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
+            var properties = _signInManager.ConfigureExternalAuthenticationProperties(serviceprovider, redirectUrl);
+            
+            //challenge starts the grant access process
+            //return of challenge redirects to callback url
+            return Challenge(properties, serviceprovider);
+        }
+
+        /// <summary>
+        /// if there is an error, the user with be redirected to login.  If successful, redirect to home page
+        /// </summary>
+        /// <param name="error"></param>
+        /// <returns>external login</returns>
+        [HttpGet]
+        public async Task<IActionResult> ExternalLoginCallback(string error = null)
+        {
+            //if there is a login error, redirect them to login
+            if(error != null)
+            {
+                TempData["Error"] = "Service Provider Error";
+                return RedirectToAction("Login");
+            }
+
+            //verify that the app supports the service provider
+            var info = await _signInManager.GetExternalLoginInfoAsync();
+
+            //if there is no info, return back to login
+            if (info ==  null)
+            {
+                return RedirectToAction(nameof(Login));
+            }
+
+            //login with the external provider using the info from the sign in manager
+            var result = await _signInManager.ExternalLoginSignInAsync(info.LoginProvider, info.ProviderKey, isPersistent: false, bypassTwoFactor: true);
+
+            //if login is successful, redirect to home page
+            if (result.Succeeded)
+            {
+                //go to index on the home
+                return RedirectToAction("Index", "Home");
+            }
+
+            //get email if this is the first request
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+            //redirect to external login for the user to log in
+            return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+        }
+
+        /// <summary>
+        /// Confirms external login by either returning a loading error or signing in the user
+        /// </summary>
+        /// <param name="elvm"></param>
+        /// <returns>external login view model</returns>
+        public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
+        {
+            if (ModelState.IsValid)
+            {
+                var info = await _signInManager.GetExternalLoginInfoAsync();
+                if (info == null)
+                {
+                    TempData["Error"] = "Loading error";
+                }
+
+                //create a user
+                var user = new ApplicationUser { UserName = elvm.Email, Email = elvm.Email };
+                var result = await _userManager.CreateAsync(user);
+                
+                if(result.Succeeded)
+                {
+                    result = await _userManager.AddLoginAsync(user, info);
+
+                    if (result.Succeeded)
+                    {
+                        await _signInManager.SignInAsync(user, isPersistent: false);
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+            }
+            return View(elvm);
+        }
     }
 }
