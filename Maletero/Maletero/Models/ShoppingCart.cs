@@ -14,7 +14,9 @@ namespace Maletero.Models
 
         [Required]
         public int CartID { get; set; }
-        // public Shopper ShopperID { get; set; }
+
+        [Required]
+        public int ShopperID { get; set; }
 
         [Required]
         public Product ProductID { get; set; }
