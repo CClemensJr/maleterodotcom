@@ -57,6 +57,8 @@ namespace Maletero
                 {
                     google.ClientId = Configuration["Authentication:Google:ClientId"];
                     google.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                });
+                //Charles: add facebook, Microsoft, Twitter, etc. here
 
             services.AddAuthorization(options =>
             {
