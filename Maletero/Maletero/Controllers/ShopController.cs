@@ -41,7 +41,7 @@ namespace Maletero.Controllers
         /// <returns>A View</returns>
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> ViewBag(int id)
+        public async Task<IActionResult> ShowBag(int id)
         {
             return View(await _inventory.GetbyID(id));
         }
@@ -59,8 +59,12 @@ namespace Maletero.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult>ViewBag([Bind("ID,Image,Name,Description,Price")] Product product)
+        public async Task<IActionResult>ShowBag([Bind("ID,Image,Name,Description,Price")] Product product)
         {
+            if (ModelState.IsValid)
+            {
+
+            }
             return View("Index");
         }
     }
