@@ -134,6 +134,7 @@ namespace Maletero.Controllers
         [HttpGet]
         public async Task<IActionResult> ExternalLoginCallback(string error = null)
         {
+            //if there is a login error, redirect them to login
             if(error != null)
             {
                 TempData["Error"] = "Service Provider Error";
@@ -143,6 +144,7 @@ namespace Maletero.Controllers
             //verify that the app supports the service provider
             var info = await _signInManager.GetExternalLoginInfoAsync();
 
+            //if there is no info, return back to login
             if (info ==  null)
             {
                 return RedirectToAction(nameof(Login));
@@ -154,8 +156,13 @@ namespace Maletero.Controllers
             //if login is successful, redirect to home page
             if (result.Succeeded)
             {
+                //go to index on the home
                 return RedirectToAction("Index", "Home");
             }
+
+            var email = info.Principal.FindFirstValue(ClaimTypes.Email);
+
+            return View("ExternalLogin", ExternalLoginViewModel);
         }
     }
 }
