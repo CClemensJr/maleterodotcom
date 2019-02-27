@@ -12,12 +12,10 @@
 
 <div class="container">
     <form method="post">
-
+        <img src="@Model.Image" />
+        <label asp-for="@Model.Name"></label>
+        <label asp-for="@Model.Description"></label>
+        <label asp-for="@Model.Price"></label>
+        <button>Add to cart</button>
     </form>
-    <img src="@Model.Image" />
-    <h1>@Model.Name</h1>
-    <p>@Model.Description</p>
-    <p>@Model.Price</p>
-    <button>Add to cart</button>
-    <hr />
 </div>
