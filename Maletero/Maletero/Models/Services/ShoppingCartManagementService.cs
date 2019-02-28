@@ -69,9 +69,19 @@ namespace Maletero.Models.Services
             return await __table.ShoppingCarts.ToListAsync();
         }
 
-        public Task UpdateCart(ShoppingCart cart)
+        /// <summary>
+        /// This method takes a cart object and updates it in the database
+        /// </summary>
+        /// <param name="cart"></param>
+        /// <returns>A Task object</returns>
+        public async Task UpdateCart(ShoppingCart cart)
         {
-            throw new NotImplementedException();
+            if (await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.ID == cart.ID) != null)
+            {
+                __table.ShoppingCarts.Update(cart);
+
+                await __table.SaveChangesAsync();
+            }
         }
     }
 }
