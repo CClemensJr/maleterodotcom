@@ -137,26 +137,38 @@ namespace Maletero.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CartID");
-
-                    b.Property<int>("ProductIDID");
-
-                    b.Property<int>("ProductQuantity");
-
-                    b.Property<int>("ShopperID");
+                    b.Property<string>("UserID")
+                        .IsRequired();
 
                     b.HasKey("ID");
-
-                    b.HasIndex("ProductIDID");
 
                     b.ToTable("ShoppingCarts");
                 });
 
-            modelBuilder.Entity("Maletero.Models.ShoppingCart", b =>
+            modelBuilder.Entity("Maletero.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("Maletero.Models.Product", "ProductID")
-                        .WithMany()
-                        .HasForeignKey("ProductIDID")
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NumberOfProducts");
+
+                    b.Property<int>("ProductID");
+
+                    b.Property<int>("ShoppingCartID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ShoppingCartID");
+
+                    b.ToTable("ShoppingCartItems");
+                });
+
+            modelBuilder.Entity("Maletero.Models.ShoppingCartItem", b =>
+                {
+                    b.HasOne("Maletero.Models.ShoppingCart")
+                        .WithMany("ShoppingCartItems")
+                        .HasForeignKey("ShoppingCartID")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Maletero.Migrations
 {
     [DbContext(typeof(MaleteroDbContext))]
-    [Migration("20190220203516_seed")]
-    partial class seed
+    [Migration("20190228165301_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace Maletero.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Maletero.Models.Interfaces.Product", b =>
+            modelBuilder.Entity("Maletero.Models.Product", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -131,6 +131,47 @@ namespace Maletero.Migrations
                             Price = 100.00m,
                             SKU = "abc-10"
                         });
+                });
+
+            modelBuilder.Entity("Maletero.Models.ShoppingCart", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("UserID")
+                        .IsRequired();
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ShoppingCarts");
+                });
+
+            modelBuilder.Entity("Maletero.Models.ShoppingCartItem", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("NumberOfProducts");
+
+                    b.Property<int>("ProductID");
+
+                    b.Property<int>("ShoppingCartID");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ShoppingCartID");
+
+                    b.ToTable("ShoppingCartItems");
+                });
+
+            modelBuilder.Entity("Maletero.Models.ShoppingCartItem", b =>
+                {
+                    b.HasOne("Maletero.Models.ShoppingCart")
+                        .WithMany("ShoppingCartItems")
+                        .HasForeignKey("ShoppingCartID")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }
