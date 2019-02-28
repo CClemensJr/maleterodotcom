@@ -1,4 +1,5 @@
-﻿using Maletero.Models.Interfaces;
+﻿using Maletero.Data;
+using Maletero.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,13 @@ namespace Maletero.Models.Services
 {
     public class ShoppingCartManagementService : IShoppingCartManager
     {
-        public Task AddToCart(ShoppingCartItem item)
+        private MaleteroDbContext __table { get; }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        public async Task AddToCart(ShoppingCartItem item)
         {
             throw new NotImplementedException();
         }
