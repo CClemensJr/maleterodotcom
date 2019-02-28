@@ -33,9 +33,9 @@
             <p>Login service providers</p>
 
             <form asp-action="ExternalLogin" method="post">
-                @foreach(var provider in loginProviders)
+                @foreach(var serviceprovider in loginProviders)
                 {
-                    <button type ="submit" name="provider" value="@provider.Name" title="Log in with @provider.DisplayName">@provider.Name</button>
+                    <button type ="submit" name="serviceprovider" value="@serviceprovider.Name" title="Log in with @serviceprovider.DisplayName">@serviceprovider.Name</button>
                 }
             </form>
         }
