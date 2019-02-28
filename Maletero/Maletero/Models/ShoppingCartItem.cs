@@ -17,5 +17,8 @@ namespace Maletero.Models
 
         [ForeignKey("Product")]
         public int ProductID { get; set; }
+
+        [Required]
+        public int NumberOfProducts { get; set; }
     }
 }
