@@ -17,8 +17,9 @@ namespace Maletero.Models.Interfaces
         Task<IEnumerable<ShoppingCartItem>> GetAllCartItems();
 
         // Update a ShoppingCart
+        Task UpdateCartItems(ShoppingCartItem item);
 
         // Delete a ShoppingCartItem 
-
+        Task DeleteCartItem(int id);
     }
 }
