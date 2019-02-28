@@ -176,7 +176,7 @@ namespace Maletero.Controllers
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
 
             //redirect to external login for the user to log in
-            return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+            return View("ExternalLoginConfirmation", new ExternalLoginViewModel { Email = email });
         }
 
         /// <summary>
@@ -184,6 +184,7 @@ namespace Maletero.Controllers
         /// </summary>
         /// <param name="elvm"></param>
         /// <returns>external login view model</returns>
+        [HttpPost]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
         {
             if (ModelState.IsValid)
@@ -207,6 +208,10 @@ namespace Maletero.Controllers
                 {
                     Claim fullNameClaim = new Claim("FullName", $"{ user.FirstName } {user.LastName }");
                     Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    List<Claim> allClaims = new List<Claim> { fullNameClaim, emailClaim };
+
+                    await _userManager.AddClaimsAsync(user, allClaims);
 
                     result = await _userManager.AddLoginAsync(user, info);
 

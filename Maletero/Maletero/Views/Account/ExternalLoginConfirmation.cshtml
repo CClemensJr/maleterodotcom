@@ -6,7 +6,7 @@
 
 <p>External Login</p>
 
-<form asp-action="ExternalLoginConfirmation" method="post">
+<form asp-controller="Account" asp-action="ExternalLoginConfirmation" method="post">
     <label asp-for="Email"></label>
     <input asp-for="Email" />
 
