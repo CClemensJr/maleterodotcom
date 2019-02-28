@@ -25,9 +25,11 @@ namespace Maletero.Models.Services
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        public async Task AddToCart(ShoppingCartItem item)
+        public async Task CreateCart(ShoppingCart cart)
         {
-            throw new NotImplementedException();
+            __table.ShoppingCarts.Add(cart);
+
+            await __table.SaveChangesAsync();
         }
 
         public Task DeleteCartItem(int id)
