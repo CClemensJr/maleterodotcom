@@ -24,7 +24,7 @@ namespace Maletero.Models.Services
         /// This method takes an item and add to cart
         /// </summary>
         /// <param name="item"></param>
-        /// <returns></returns>
+        /// <returns>A Task</returns>
         public async Task CreateCart(ShoppingCart cart)
         {
             __table.ShoppingCarts.Add(cart);
@@ -32,9 +32,21 @@ namespace Maletero.Models.Services
             await __table.SaveChangesAsync();
         }
 
-        public Task DeleteCartItem(int id)
+        /// <summary>
+        /// This method take and id and deletes the cart from if it exhists.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A Task object</returns>
+        public async Task DeleteCart(int id)
         {
-            throw new NotImplementedException();
+            ShoppingCart cart = await __table.ShoppingCarts.FindAsync(id);
+
+            if (cart != null)
+            {
+                __table.Remove(cart);
+            }
+
+            await __table.SaveChangesAsync();
         }
 
         public Task<ShoppingCartItem> GetACartItem(int id)
