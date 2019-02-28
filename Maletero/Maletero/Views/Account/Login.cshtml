@@ -24,4 +24,20 @@
 
         <button type="submit">Login</button>
     </form>
+
+    @{ 
+        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+        if (loginProviders.Count > 0)
+        {
+            <p>Login service providers</p>
+
+            <form asp-action="ExternalLogin" method="post">
+                @foreach(var provider in loginProviders)
+                {
+                    <button type ="submit" name="provider" value="@provider.Name" title="Log in with @provider.DisplayName">@provider.Name</button>
+                }
+            </form>
+        }
+    }
 </body>
