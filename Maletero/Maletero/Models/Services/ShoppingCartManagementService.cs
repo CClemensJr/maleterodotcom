@@ -10,14 +10,26 @@ namespace Maletero.Models.Services
     public class ShoppingCartManagementService : IShoppingCartManager
     {
         private MaleteroDbContext __table { get; }
+
         /// <summary>
-        /// 
+        /// This custom constructor assigns a dbcontext to the property.
+        /// </summary>
+        /// <param name="cart"></param>
+        public ShoppingCartManagementService(MaleteroDbContext cart)
+        {
+            __table = cart;
+        }
+
+        /// <summary>
+        /// This method takes an item and adds it to the shoppingcart
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
         public async Task AddToCart(ShoppingCartItem item)
         {
-            throw new NotImplementedException();
+            __table.ShoppingCarts.Add(item);
+
+            await __table.SaveChangesAsync();
         }
 
         public Task DeleteCartItem(int id)
