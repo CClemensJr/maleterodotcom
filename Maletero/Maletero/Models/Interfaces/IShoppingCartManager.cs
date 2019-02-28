@@ -14,7 +14,7 @@ namespace Maletero.Models.Interfaces
         Task<ShoppingCartItem> GetACartItem(int id);
 
         // Get all of the ShoppingCartItems from the ShoppingCart
-
+        Task<IEnumerable<ShoppingCartItem>> GetAllCartItems();
 
         // Update a ShoppingCart
 
