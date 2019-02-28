@@ -1,0 +1,13 @@
+﻿@model Maletero.Models.ViewModels.ExternalLoginViewModel
+
+@{
+    Layout = "_Layout";
+}
+
+<p>External Login</p>
+
+<form asp-action="ExternalLoginConfirmation" method="post">
+    <label asp-for="Email"></label>
+    <input asp-for="Email" />
+    <button type="submit">Register</button>
+</form>
