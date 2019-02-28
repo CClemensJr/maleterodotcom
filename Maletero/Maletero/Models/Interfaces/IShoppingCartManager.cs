@@ -8,10 +8,10 @@ namespace Maletero.Models.Interfaces
     public interface IShoppingCartManager
     {
         // Create a new cart
-        Task AddToCart(ShoppingCart cart);
+        Task CreateCart(ShoppingCart cart);
 
         // Get a cart
-        Task<ShoppingCartItem> GetACart(int id);
+        Task<ShoppingCartItem> GetCart(int id);
 
         // Get all carts
         Task<IEnumerable<ShoppingCartItem>> GetAllCarts();
