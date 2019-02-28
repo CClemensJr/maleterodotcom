@@ -27,6 +27,7 @@
                 @if (signInManager.IsSignedIn(User))
                 {
                     <span>Welcome to Maletero, @User.Claims.First(c => c.Type == "FullName").Value!</span>
+                    <a href="/Account/Logout">Logout</a>
                 }
                 else
                 {
