@@ -205,6 +205,9 @@ namespace Maletero.Controllers
                 
                 if(result.Succeeded)
                 {
+                    Claim fullNameClaim = new Claim("FullName", $"{ user.FirstName } {user.LastName }");
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
                     result = await _userManager.AddLoginAsync(user, info);
 
                     if (result.Succeeded)
