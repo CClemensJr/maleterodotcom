@@ -1,5 +1,6 @@
 ﻿using Maletero.Data;
 using Maletero.Models.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -59,9 +60,13 @@ namespace Maletero.Models.Services
             return await __table.ShoppingCarts.FindAsync(id);
         }
 
-        public Task<IEnumerable<ShoppingCart>> GetAllCarts()
+        /// <summary>
+        /// This method returns all carts in the table
+        /// </summary>
+        /// <returns>A list of ShoppingCart objects</returns>
+        public async Task<IEnumerable<ShoppingCart>> GetAllCarts()
         {
-            throw new NotImplementedException();
+            return await __table.ShoppingCarts.ToListAsync();
         }
 
         public Task UpdateCart(ShoppingCart cart)
