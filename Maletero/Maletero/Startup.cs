@@ -69,6 +69,12 @@ namespace Maletero
                     microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
                 });
 
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
+
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement()));
