@@ -59,6 +59,7 @@ namespace Maletero
                 {
                     o.ClientId = Configuration["Authentication:Google:ClientId"];
                     o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                    o.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
                 });
            
             services.AddAuthentication()
