@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Maletero.Data;
 using Maletero.Models;
 using Maletero.Models.Handler;
 using Maletero.Models.Interfaces;
 using Maletero.Models.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -52,12 +54,13 @@ namespace Maletero
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
-            //services.AddAuthentication()
-            //    .AddGoogle(google =>
-            //    {
-            //        google.ClientId = Configuration["Authentication:Google:ClientId"];
-            //        google.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //    });
+            services.AddAuthentication()
+                .AddGoogle(o =>
+                {
+                    o.ClientId = Configuration["Authentication:Google:ClientId"];
+                    o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                });
+           
             services.AddAuthentication()
                 .AddMicrosoftAccount(microsoftOptions =>
                 {
