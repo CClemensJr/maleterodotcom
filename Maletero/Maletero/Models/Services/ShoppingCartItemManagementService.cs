@@ -69,9 +69,19 @@ namespace Maletero.Models.Services
             return await _table.ShoppingCartItems.FindAsync(id);
         }
 
-        public Task UpdateCartItem(ShoppingCartItem item)
+        /// <summary>
+        /// This method takes an item and updates the item in the db if it exists.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>An empty Task object</returns>
+        public async Task UpdateCartItem(ShoppingCartItem item)
         {
-            throw new NotImplementedException();
+            if (await _table.ShoppingCartItems.FirstOrDefaultAsync(sci => sci.ID == item.ID) != null)
+            {
+                _table.ShoppingCartItems.Update(item);
+
+                await _table.SaveChangesAsync();
+            }
         }
     }
 }
