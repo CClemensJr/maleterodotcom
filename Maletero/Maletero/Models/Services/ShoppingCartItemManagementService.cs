@@ -1,4 +1,5 @@
-﻿using Maletero.Models.Interfaces;
+﻿using Maletero.Data;
+using Maletero.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,17 @@ namespace Maletero.Models.Services
 {
     public class ShoppingCartItemManagementService : IShoppingCartItemManager
     {
-        private MaleteroDbcontext _table { get; }
+        private MaleteroDbContext _table { get; }
+
+        /// <summary>
+        /// This custom constructor assigns a dbcontext to the property.
+        /// </summary>
+        /// <param name="cartItem"></param>
+        public ShoppingCartItemManagementService(MaleteroDbContext cartItem)
+        {
+            _table = cartItem;
+        }
+
         public Task CreateCartItem(ShoppingCartItem item)
         {
             throw new NotImplementedException();
