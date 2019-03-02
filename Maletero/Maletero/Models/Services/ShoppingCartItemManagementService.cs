@@ -20,9 +20,16 @@ namespace Maletero.Models.Services
             _table = cartItem;
         }
 
-        public Task CreateCartItem(ShoppingCartItem item)
+        /// <summary>
+        /// This method takes an object and Adds it to the table.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>An empty Task object</returns>
+        public async Task CreateCartItem(ShoppingCartItem item)
         {
-            throw new NotImplementedException();
+            _table.ShoppingCartItems.Add(item);
+
+            await _table.SaveChangesAsync();
         }
 
         public Task DeleteCartItem(int id)
