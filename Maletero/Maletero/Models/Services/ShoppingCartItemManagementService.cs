@@ -59,9 +59,14 @@ namespace Maletero.Models.Services
             return await _table.ShoppingCartItems.ToListAsync();
         }
 
-        public Task<ShoppingCartItem> GetCartItem(int id)
+        /// <summary>
+        /// This method takes an ID and returns the object with that ID from the table.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>A Task object containing a ShoppingCartItem</returns>
+        public async Task<ShoppingCartItem> GetCartItem(int id)
         {
-            throw new NotImplementedException();
+            return await _table.ShoppingCartItems.FindAsync(id);
         }
 
         public Task UpdateCartItem(ShoppingCartItem item)
