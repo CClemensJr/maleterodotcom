@@ -32,9 +32,21 @@ namespace Maletero.Models.Services
             await _table.SaveChangesAsync();
         }
 
-        public Task DeleteCartItem(int id)
+        /// <summary>
+        /// This method takes an id then deletes an object with the same ID from the table if it exists.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>An empty Task object</returns>
+        public async Task DeleteCartItem(int id)
         {
-            throw new NotImplementedException();
+            ShoppingCartItem item = await _table.ShoppingCartItems.FindAsync(id);
+
+            if (item != null)
+            {
+                _table.Remove(item);
+            }
+
+            await _table.SaveChangesAsync();
         }
 
         public Task<IEnumerable<ShoppingCartItem>> GetAllCartItems()
