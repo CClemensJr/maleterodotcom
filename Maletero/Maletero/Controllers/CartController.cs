@@ -1,4 +1,5 @@
-﻿using Maletero.Models.Interfaces;
+﻿using Maletero.Models;
+using Maletero.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,10 @@ namespace Maletero.Controllers
             _cartItem = cartItem;
         }
 
-
+        [HttpPost]
+        public async Task AddToCart(int id)
+        {
+            //Product product = 
+        }
     }
 }
