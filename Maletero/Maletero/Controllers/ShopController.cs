@@ -51,6 +51,7 @@ namespace Maletero.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
             Product product = await _inventory.GetbyID(id);
@@ -59,7 +60,7 @@ namespace Maletero.Controllers
             {
                 ShoppingCart shoppingCart = new ShoppingCart();
 
-                shoppingCart.ID = Convert.ToInt32(DateTime.Now);
+                //shoppingCart.ID = Convert.ToInt32(DateTime.Now);
                 shoppingCart.UserID = "test@test.com";
 
                 shoppingCart.AddProduct(product, 1);
