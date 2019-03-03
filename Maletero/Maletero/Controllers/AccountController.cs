@@ -2,6 +2,7 @@
 using Maletero.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,16 +17,18 @@ namespace Maletero.Controllers
     {
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
+        private IEmailSender _emailSender;
 
         /// <summary>
         /// This custom constructer assigns the values of an object at create to the class properties
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailSender = emailSender;
         }
 
         /// <summary>
@@ -141,7 +144,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// if there is an error, the user with be redirected to login.  If successful, redirect to home page
         /// </summary>
-        /// <param name="error"></param>
+        /// <param name="error">error string</param>
         /// <returns>external login</returns>
         [HttpGet]
         public async Task<IActionResult> ExternalLoginCallback(string error = null)
@@ -182,7 +185,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// Confirms external login by either returning a loading error or signing in the user
         /// </summary>
-        /// <param name="elvm"></param>
+        /// <param name="elvm">external login view model</param>
         /// <returns>external login view model</returns>
         [HttpPost]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
