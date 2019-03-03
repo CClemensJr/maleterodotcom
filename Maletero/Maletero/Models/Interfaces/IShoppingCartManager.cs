@@ -9,6 +9,7 @@ namespace Maletero.Models.Interfaces
     {
         // Create a new cart
         Task CreateCart(ShoppingCart cart);
+        Task CreateCart();
 
         // Get a cart
         Task<ShoppingCart> GetCart(int id);
