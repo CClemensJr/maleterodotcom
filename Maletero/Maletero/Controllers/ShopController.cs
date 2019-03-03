@@ -20,11 +20,11 @@ namespace Maletero.Controllers
         /// This custom constructor is used to bring in the Inventory interface
         /// </summary>
         /// <param name="inventory"></param>
-        public ShopController(IInventory inventory, IShoppingCartManager cart, IShoppingCartItemManager cartItem)
+        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem)
         {
             _inventory = inventory;
-            _cart = cart;
-            _cartItem = cartItem;
+            _cart = shoppingCart;
+            _cartItem = shoppingCartItem;
         }
 
         /// <summary>
@@ -50,6 +50,7 @@ namespace Maletero.Controllers
             return View(await _inventory.GetbyID(id));
         }
 
+
         [HttpPost]
         [AllowAnonymous]
         public async Task<RedirectToActionResult> AddToCart(int id)
@@ -58,17 +59,21 @@ namespace Maletero.Controllers
 
             if (product != null)
             {
-                ShoppingCart shoppingCart = new ShoppingCart();
+                ShoppingCart cart = new ShoppingCart();
 
-                //shoppingCart.ID = Convert.ToInt32(DateTime.Now);
-                shoppingCart.UserID = "test@test.com";
+                cart.ID = 1;
+                cart.UserID = "test@test.com";
 
-                shoppingCart.AddProduct(product, 1);
+                ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
-                await _cart.UpdateCart(shoppingCart);
+                cart.ShoppingCartItems.Add(cartItem);
+
+                await _cartItem.CreateCartItem(cartItem);
+                await _cart.CreateCart(cart);
+                // await _cart.UpdateCart(shoppingCart);
             }
 
-            return RedirectToAction("/Shop/Index");
+            return RedirectToAction("Index");
 
         }
 
