@@ -28,8 +28,10 @@ namespace Maletero.Models
         /// <returns></returns>
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
+            //establish connection to sendgrid
             SendGridClient client = new SendGridClient(_configuration["Sendgrid_Api_Key"]);
 
+            //load the message
             SendGridMessage msg = new SendGridMessage();
 
             msg.SetFrom("noreply@Maletero.com", "Maletero Admin");
@@ -38,6 +40,7 @@ namespace Maletero.Models
             msg.SetSubject("Welcome to our Store!");
             msg.AddContent(MimeType.Html, htmlMessage);
 
+            //send message
             await client.SendEmailAsync(msg);
         }
     }
