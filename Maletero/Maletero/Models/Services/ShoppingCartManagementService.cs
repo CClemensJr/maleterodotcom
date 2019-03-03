@@ -22,6 +22,20 @@ namespace Maletero.Models.Services
         }
 
         /// <summary>
+        /// This method creates an object and Adds it to the table.
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>A Task</returns>
+        public async Task CreateCart()
+        {
+            ShoppingCart cart = new ShoppingCart();
+
+            __table.ShoppingCarts.Add(cart);
+
+            await __table.SaveChangesAsync();
+        }
+
+        /// <summary>
         /// This method takes an object and Adds it to the table.
         /// </summary>
         /// <param name="item"></param>
