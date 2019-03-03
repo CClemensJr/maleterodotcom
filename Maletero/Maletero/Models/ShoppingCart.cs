@@ -40,10 +40,13 @@ namespace Maletero.Models
             }
         }
 
+        /// <summary>
+        /// This method takes an shopping cart item and removes it from the cart
+        /// </summary>
+        /// <param name="product"></param>
         public void RemoveFromCart(Product product)
         {
-            if (ShoppingCartItems.Contains(ShoppingCartItem.product))
-            ShoppingCartItems.Comp;
+            ShoppingCartItems.RemoveAll(sci => sci.Product.ID == product.ID);
         }
     }
 }
