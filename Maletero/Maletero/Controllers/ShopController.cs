@@ -61,14 +61,14 @@ namespace Maletero.Controllers
             {
                 ShoppingCart cart = new ShoppingCart();
 
-                cart.ID = 1;
                 cart.UserID = "test@test.com";
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
+                await _cartItem.CreateCartItem(cartItem);
+
                 cart.ShoppingCartItems.Add(cartItem);
 
-                await _cartItem.CreateCartItem(cartItem);
                 await _cart.CreateCart(cart);
                 // await _cart.UpdateCart(shoppingCart);
             }
