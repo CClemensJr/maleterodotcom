@@ -29,7 +29,19 @@ namespace Maletero.Controllers
         [HttpPost]
         public async Task AddToCart(int id)
         {
-            //Product product = 
+            Product product = await _inventory.GetbyID(id);
+
+            if (product != null)
+            {
+                ShoppingCart shoppingCart = new ShoppingCart();
+
+                shoppingCart.ID = Convert.ToInt32(DateTime.Now);
+                shoppingCart.UserID = "test@test.com";
+
+                shoppingCart.AddProduct(product, 1);
+
+                await _cart.UpdateCart(shoppingCart);
+            }
         }
     }
 }
