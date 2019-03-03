@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Maletero.Data;
 using Maletero.Models;
 using Maletero.Models.Handler;
 using Maletero.Models.Interfaces;
 using Maletero.Models.Services;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -37,33 +39,41 @@ namespace Maletero
         {
             services.AddMvc();
 
-            //services.AddDbContext<MaleteroDbContext>(options =>
-            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddDbContext<MaleteroDbContext>(options =>
-                                                     options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<MaleteroDbContext>(options =>
+            //                                         options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
 
-            //services.AddDbContext<ApplicationDbContext>(options => 
-            //                                            options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
             services.AddDbContext<ApplicationDbContext>(options =>
-                                                        options.UseSqlServer(Configuration["ConnectionStrings:ProductionIdentityConnection"]));
+                                                        options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //                                            options.UseSqlServer(Configuration["ConnectionStrings:ProductionIdentityConnection"]));
 
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
                     .AddEntityFrameworkStores<ApplicationDbContext>()
                     .AddDefaultTokenProviders();
 
-            //services.AddAuthentication()
-            //    .AddGoogle(google =>
-            //    {
-            //        google.ClientId = Configuration["Authentication:Google:ClientId"];
-            //        google.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
-            //    });
+            services.AddAuthentication()
+                .AddGoogle(o =>
+                {
+                    o.ClientId = Configuration["Authentication:Google:ClientId"];
+                    o.ClientSecret = Configuration["Authentication:Google:ClientSecret"];
+                    o.UserInformationEndpoint = "https://www.googleapis.com/oauth2/v2/userinfo";
+                });
+           
             services.AddAuthentication()
                 .AddMicrosoftAccount(microsoftOptions =>
                 {
                     microsoftOptions.ClientId = Configuration["Authentication:Microsoft:ApplicationId"];
                     microsoftOptions.ClientSecret = Configuration["Authentication:Microsoft:Password"];
                 });
+
+            services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = Configuration["Authentication:Facebook:AppSecret"];
+            });
 
             services.AddAuthorization(options =>
             {

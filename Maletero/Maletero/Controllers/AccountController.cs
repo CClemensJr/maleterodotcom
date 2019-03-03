@@ -121,13 +121,20 @@ namespace Maletero.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        /// <summary>
+        /// This method sends user info to the service provider
+        /// </summary>
+        /// <param name="serviceprovider"></param>
+        /// <returns>grant access</returns>
+        [HttpPost]
         public IActionResult ExternalLogin(string serviceprovider)
         {
+            //set the redirect for after OAUTH is established
             var redirectUrl = Url.Action(nameof(ExternalLoginCallback), "Account");
+            //properties for the providers
             var properties = _signInManager.ConfigureExternalAuthenticationProperties(serviceprovider, redirectUrl);
             
             //challenge starts the grant access process
-            //return of challenge redirects to callback url
             return Challenge(properties, serviceprovider);
         }
 
@@ -169,7 +176,7 @@ namespace Maletero.Controllers
             var email = info.Principal.FindFirstValue(ClaimTypes.Email);
 
             //redirect to external login for the user to log in
-            return View("ExternalLogin", new ExternalLoginViewModel { Email = email });
+            return View("ExternalLoginConfirmation", new ExternalLoginViewModel { Email = email });
         }
 
         /// <summary>
@@ -177,6 +184,7 @@ namespace Maletero.Controllers
         /// </summary>
         /// <param name="elvm"></param>
         /// <returns>external login view model</returns>
+        [HttpPost]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)
         {
             if (ModelState.IsValid)
@@ -188,11 +196,23 @@ namespace Maletero.Controllers
                 }
 
                 //create a user
-                var user = new ApplicationUser { UserName = elvm.Email, Email = elvm.Email };
+                var user = new ApplicationUser {
+                    UserName = elvm.Email,
+                    Email = elvm.Email,
+                    FirstName = elvm.FirstName,
+                    LastName = elvm.LastName
+                };
                 var result = await _userManager.CreateAsync(user);
                 
                 if(result.Succeeded)
                 {
+                    Claim fullNameClaim = new Claim("FullName", $"{ user.FirstName } {user.LastName }");
+                    Claim emailClaim = new Claim(ClaimTypes.Email, user.Email, ClaimValueTypes.Email);
+
+                    List<Claim> allClaims = new List<Claim> { fullNameClaim, emailClaim };
+
+                    await _userManager.AddClaimsAsync(user, allClaims);
+
                     result = await _userManager.AddLoginAsync(user, info);
 
                     if (result.Succeeded)

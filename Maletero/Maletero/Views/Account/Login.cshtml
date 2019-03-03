@@ -1,4 +1,8 @@
 ﻿@model Maletero.Models.ViewModels.LoginViewModel
+@using Microsoft.AspNetCore.Identity;
+@using Maletero.Models;
+
+@inject SignInManager<ApplicationUser> SignInManager
 
 @{
     Layout = "_Layout";
@@ -20,4 +24,20 @@
 
         <button type="submit">Login</button>
     </form>
+
+    @{ 
+        var loginProviders = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+        if (loginProviders.Count > 0)
+        {
+            <p>Login service providers</p>
+
+            <form asp-action="ExternalLogin" method="post">
+                @foreach(var serviceprovider in loginProviders)
+                {
+                    <button type ="submit" name="serviceprovider" value="@serviceprovider.Name" title="Log in with @serviceprovider.DisplayName">@serviceprovider.Name</button>
+                }
+            </form>
+        }
+    }
 </body>
