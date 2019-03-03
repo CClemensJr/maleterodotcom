@@ -17,7 +17,7 @@ namespace Maletero.Models
         [EmailAddress]
         public string UserID { get; set; }
 
-        public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         /// <summary>
         /// This method takes an object and a quantity and either adds the object to the cart or increases the number objects in the cart.
@@ -38,6 +38,12 @@ namespace Maletero.Models
             {
                 cartItem.Quantity += quantity;
             }
+        }
+
+        public void RemoveFromCart(Product product)
+        {
+            if (ShoppingCartItems.Contains(ShoppingCartItem.product))
+            ShoppingCartItems.Comp;
         }
     }
 }
