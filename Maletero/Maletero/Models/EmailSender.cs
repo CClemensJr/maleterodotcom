@@ -19,6 +19,13 @@ namespace Maletero.Models
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// Send email method brings in email, subject, and message parameters
+        /// </summary>
+        /// <param name="email">email</param>
+        /// <param name="subject">email subject</param>
+        /// <param name="htmlMessage">email message</param>
+        /// <returns></returns>
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             SendGridClient client = new SendGridClient(_configuration["Sendgrid_Api_Key"]);
