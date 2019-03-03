@@ -20,5 +20,23 @@ namespace Maletero.Models
 
         [Required]
         public int Quantity { get; set; }
+
+        /// <summary>
+        /// Default constructor
+        /// </summary>
+        public ShoppingCartItem() {}
+
+        /// <summary>
+        /// This is a custom constructor that allows properties to be set upon instantiation
+        /// </summary>
+        /// <param name="cartID"></param>
+        /// <param name="product"></param>
+        /// <param name="quantity"></param>
+        public ShoppingCartItem(int cartID, Product product, int quantity)
+        {
+            ShoppingCartID = cartID;
+            Product = product;
+            Quantity = quantity;
+        }
     }
 }
