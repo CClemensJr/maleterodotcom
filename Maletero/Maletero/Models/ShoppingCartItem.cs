@@ -16,7 +16,7 @@ namespace Maletero.Models
         public int ShoppingCartID { get; set; }
 
         [ForeignKey("Product")]
-        public int ProductID { get; set; }
+        public Product Product { get; set; }
 
         [Required]
         public int NumberOfProducts { get; set; }
