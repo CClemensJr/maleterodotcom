@@ -27,7 +27,7 @@ namespace Maletero.Controllers
         }
 
         [HttpPost]
-        public async Task AddToCart(int id)
+        public async Task<RedirectToActionResult> AddToCart(int id)
         {
             Product product = await _inventory.GetbyID(id);
 
@@ -42,6 +42,9 @@ namespace Maletero.Controllers
 
                 await _cart.UpdateCart(shoppingCart);
             }
+
+            return RedirectToAction("/Shop/Index");
+
         }
     }
 }
