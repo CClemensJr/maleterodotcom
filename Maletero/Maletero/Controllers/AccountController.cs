@@ -144,7 +144,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// if there is an error, the user with be redirected to login.  If successful, redirect to home page
         /// </summary>
-        /// <param name="error"></param>
+        /// <param name="error">error string</param>
         /// <returns>external login</returns>
         [HttpGet]
         public async Task<IActionResult> ExternalLoginCallback(string error = null)
@@ -185,7 +185,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// Confirms external login by either returning a loading error or signing in the user
         /// </summary>
-        /// <param name="elvm"></param>
+        /// <param name="elvm">external login view model</param>
         /// <returns>external login view model</returns>
         [HttpPost]
         public async Task<IActionResult> ExternalLoginConfirmation(ExternalLoginViewModel elvm)

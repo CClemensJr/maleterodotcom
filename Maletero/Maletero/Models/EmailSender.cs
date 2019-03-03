@@ -25,7 +25,7 @@ namespace Maletero.Models
         /// <param name="email">email</param>
         /// <param name="subject">email subject</param>
         /// <param name="htmlMessage">email message</param>
-        /// <returns></returns>
+        /// <returns>client email</returns>
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
             //establish connection to sendgrid
