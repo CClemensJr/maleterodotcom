@@ -11,7 +11,7 @@
 
 
 <div class="container">
-    <form id="@Model.ID" asp-action="AddToCart" asp-controller="CartController" method="post">
+    <form method="post" id="Model.ID" asp-action="AddToCart" asp-controller="CartController">
         <div class="form-group">
             <img src="@Model.Image" />
         </div>
