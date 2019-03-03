@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace Maletero.Models
 {
@@ -17,5 +18,26 @@ namespace Maletero.Models
         public string UserID { get; set; }
 
         public ICollection<ShoppingCartItem> ShoppingCartItems { get; set; }
+
+        /// <summary>
+        /// This method takes an object and a quantity and either adds the object to the cart or increases the number objects in the cart.
+        /// </summary>
+        /// <param name="product"></param>
+        /// <param name="quantity"></param>
+        public void AddToCart(Product product, int quantity)
+        {
+            ShoppingCartItem cartItem = ShoppingCartItems
+                .Where(p => p.Product.ID == product.ID)
+                .FirstOrDefault();
+
+            if (cartItem == null)
+            {
+                ShoppingCartItems.Add(new ShoppingCartItem(ID, product, quantity));
+            }
+            else
+            {
+                cartItem.Quantity += quantity;
+            }
+        }
     }
 }
