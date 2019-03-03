@@ -24,7 +24,7 @@ namespace Maletero.Models
         /// </summary>
         /// <param name="product"></param>
         /// <param name="quantity"></param>
-        public void AddToCart(Product product, int quantity)
+        public void AddProduct(Product product, int quantity)
         {
             ShoppingCartItem cartItem = ShoppingCartItems
                 .Where(p => p.Product.ID == product.ID)
