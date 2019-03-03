@@ -19,6 +19,6 @@ namespace Maletero.Models
         public Product Product { get; set; }
 
         [Required]
-        public int NumberOfProducts { get; set; }
+        public int Quantity { get; set; }
     }
 }
