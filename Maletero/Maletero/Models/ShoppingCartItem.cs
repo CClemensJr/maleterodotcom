@@ -20,6 +20,9 @@ namespace Maletero.Models
         public Product Product { get; set; }
 
         [Required]
+        public int ProductID { get; set; }
+
+        [Required]
         public int Quantity { get; set; }
 
         /// <summary>
@@ -38,6 +41,7 @@ namespace Maletero.Models
             ShoppingCartID = cartID;
             Product = product;
             Quantity = quantity;
+            ProductID = Product.ID;
         }
     }
 }
