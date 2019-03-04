@@ -1,4 +1,7 @@
-﻿@using Maletero.Models
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> signInManager
+
+@using Maletero.Models
 @using Maletero.Models.Services
 @model Maletero.Models.Product
 
@@ -33,3 +36,8 @@
         </div>
     </form>
 </div>
+
+@if (signInManager.IsSignedIn(User))
+{
+    @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
+}
