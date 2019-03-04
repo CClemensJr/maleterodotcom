@@ -18,5 +18,8 @@ namespace Maletero.Models.Interfaces
 
         // Delete a ShoppingCart item
         Task DeleteCartItem(int id);
+
+        //add method for to find all cart items for a specific cart
+        Task<IEnumerable<ShoppingCartItem>> GetItemsForSpecificCart(int cartId);
     }
 }

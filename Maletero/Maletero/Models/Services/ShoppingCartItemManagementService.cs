@@ -54,7 +54,9 @@ namespace Maletero.Models.Services
         /// <returns>A Task object containing a ShoppingCartItem</returns>
         public async Task<ShoppingCartItem> GetCartItem(int id)
         {
-            return await _table.ShoppingCartItems.FindAsync(id);
+            var item = await _table.ShoppingCartItems.FindAsync(id);
+            item.Product = await _table.Products.FirstOrDefaultAsync(p => p.ID == item.ProductID);
+            return item;
         }
 
         /// <summary>
@@ -74,6 +76,16 @@ namespace Maletero.Models.Services
             }
 
             await _table.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<ShoppingCartItem>> GetItemsForSpecificCart(int cartId)
+        {
+            var items = await _table.ShoppingCartItems.Where(c => c.ShoppingCartID == cartId).ToListAsync();   
+            foreach(ShoppingCartItem cartitem in items)
+            {
+                cartitem.Product = await _table.Products.FirstOrDefaultAsync(p => p.ID == cartitem.ProductID);
+            }
+            return items;
         }
     }
 }

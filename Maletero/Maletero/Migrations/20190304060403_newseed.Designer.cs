@@ -3,14 +3,16 @@ using Maletero.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Maletero.Migrations
 {
     [DbContext(typeof(MaleteroDbContext))]
-    partial class MaleteroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190304060403_newseed")]
+    partial class newseed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -105,28 +107,28 @@ namespace Maletero.Migrations
                         new
                         {
                             ID = 8,
-                            Description = "women's brown and red leather tote bag",
-                            Image = "https://images.unsplash.com/photo-1525708570275-58d59ffe4a93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
-                            Name = "Tote",
-                            Price = 2.00m,
+                            Description = "ProducttEightDescription",
+                            Image = "https://via.placeholder.com/150",
+                            Name = "ProductEightName",
+                            Price = 80.00m,
                             SKU = "abc-8"
                         },
                         new
                         {
                             ID = 9,
-                            Description = "Roud woven brown sling bag",
-                            Image = "https://images.unsplash.com/photo-1527430203327-e97f64c96a2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80",
-                            Name = "Sling Bag",
-                            Price = 3.00m,
+                            Description = "ProductNineDescription",
+                            Image = "https://via.placeholder.com/150",
+                            Name = "ProductNineName",
+                            Price = 90.00m,
                             SKU = "abc-9"
                         },
                         new
                         {
                             ID = 10,
-                            Description = "Woven tote bag with red embroidered elephant",
-                            Image = "https://images.unsplash.com/photo-1494578151111-d35ec4c84e2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80",
-                            Name = "Elephant Bag",
-                            Price = 1.00m,
+                            Description = "ProductTenDescription",
+                            Image = "https://via.placeholder.com/150",
+                            Name = "ProductTenName",
+                            Price = 100.00m,
                             SKU = "abc-10"
                         });
                 });

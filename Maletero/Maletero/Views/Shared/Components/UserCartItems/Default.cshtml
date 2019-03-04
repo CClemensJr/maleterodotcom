@@ -1,0 +1,9 @@
+﻿@model List<Maletero.Models.ShoppingCartItem>
+
+<h4>Items in Your Cart:</h4>
+
+@foreach (var item in Model)
+{
+    <p>@item.Product.Name</p>
+    <p>@item.Product.Price</p>
+}

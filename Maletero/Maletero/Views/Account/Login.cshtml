@@ -33,9 +33,23 @@
             <p>Login service providers</p>
 
             <form asp-action="ExternalLogin" method="post">
-                @foreach(var serviceprovider in loginProviders)
+                @foreach (var serviceprovider in loginProviders)
                 {
-                    <button type ="submit" name="serviceprovider" value="@serviceprovider.Name" title="Log in with @serviceprovider.DisplayName">@serviceprovider.Name</button>
+                    <button type="submit" name="serviceprovider" value="@serviceprovider.Name" title="Log in with @serviceprovider.DisplayName">
+                        @if (serviceprovider.Name == "Google")
+                        {
+                            <i class="fab fa-google"></i>
+                        }
+                        @if (serviceprovider.Name == "Microsoft")
+                        {
+                            <i class="fab fa-microsoft"></i>
+                        }
+                        @if (serviceprovider.Name == "Facebook")
+                        {
+                            <i class="fab fa-facebook-f"></i>
+                        }
+                </button>
+                    
                 }
             </form>
         }

@@ -1,11 +1,15 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using Maletero.Models
+@inject SignInManager<ApplicationUser> signInManager
+
+@{
     Layout = "_Layout";
 }
 @*<div class="homelinks">
-    <a href="/Account/Login">Login</a>
-    <a href="/Account/Register">Register</a>
-    <a href="/Account/Logout">Logout</a>
-</div>*@
+        <a href="/Account/Login">Login</a>
+        <a href="/Account/Register">Register</a>
+        <a href="/Account/Logout">Logout</a>
+    </div>*@
 
 <body>
     <img src="https://images.unsplash.com/photo-1421218108559-eb1ff78357f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80" />
@@ -17,10 +21,10 @@
     <div id="multi-item-example" class="carousel slide carousel-multi-item carousel-multi-item-2" data-ride="carousel">
 
         <!--Controls-->
-        <div class="controls-top">
+        @*<div class="controls-top">
             <a class="black-text" href="#multi-item-example" data-slide="prev"><i class="fas fa-angle-left fa-3x pr-3"></i></a>
             <a class="black-text" href="#multi-item-example" data-slide="next"><i class="fas fa-angle-right fa-3x pl-3"></i></a>
-        </div>
+        </div>*@
         <!--/.Controls-->
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
@@ -63,4 +67,9 @@
 
     </div>
     <!--/.Carousel Wrapper-->
+
+    @if (signInManager.IsSignedIn(User))
+    {
+        @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
+    }
 </body>
