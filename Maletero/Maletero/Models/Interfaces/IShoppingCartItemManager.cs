@@ -7,19 +7,16 @@ namespace Maletero.Models.Interfaces
 {
     public interface IShoppingCartItemManager
     {
-        // Create a new cartitem
-        Task CreateCartItem(ShoppingCartItem item);
-
         // Get a cart
         Task<ShoppingCartItem> GetCartItem(int id);
 
-        // Get all carts
+        // Get all carts items
         Task<IEnumerable<ShoppingCartItem>> GetAllCartItems();
 
-        // Update a ShoppingCart
-        Task UpdateCartItem(ShoppingCartItem item);
+        // Create or save a ShoppingCartItem
+        Task SaveCartItem(ShoppingCartItem item);
 
-        // Delete a ShoppingCart
+        // Delete a ShoppingCart item
         Task DeleteCartItem(int id);
     }
 }
