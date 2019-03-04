@@ -11,7 +11,7 @@ namespace Maletero.Models.Interfaces
         Task SaveCart(ShoppingCart cart);
 
         // Get a cart
-        Task<ShoppingCart> GetCart(int id);
+        Task<ShoppingCart> GetCart(string userEmail);
 
         // Get all carts
         Task<IEnumerable<ShoppingCart>> GetAllCarts();
