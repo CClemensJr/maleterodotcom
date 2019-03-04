@@ -62,6 +62,11 @@ namespace Maletero.Controllers
                     State = register.State
                 };
 
+                ShoppingCart cart = new ShoppingCart()
+                {
+                    UserID = user.UserName
+                };
+
                 var result = await _userManager.CreateAsync(user, register.Password);
 
                 if (result.Succeeded)
@@ -91,6 +96,8 @@ namespace Maletero.Controllers
 
                     var ourUser = await _userManager.FindByEmailAsync(register.Email);
                     string id = ourUser.Id;
+
+                    await _shoppingCartManager.SaveCart(cart);
 
                     return RedirectToAction("Index", "Home");
                 }
