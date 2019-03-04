@@ -61,7 +61,7 @@ namespace Maletero.Controllers
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
             Random rando = new Random();
-            var user = _userManager.GetUserId(User);
+
             Product product = await _inventory.GetbyID(id);
 
             if (product != null)
