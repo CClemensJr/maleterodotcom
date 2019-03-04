@@ -56,6 +56,7 @@ namespace Maletero.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
+        [Authorize]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
             Product product = await _inventory.GetbyID(id);
