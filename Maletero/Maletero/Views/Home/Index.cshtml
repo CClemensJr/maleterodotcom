@@ -70,6 +70,6 @@
 
     @if (signInManager.IsSignedIn(User))
     {
-        @await Component.InvokeAsync("UserCartItems", new { User.Identity.Name });
+        @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
     }
 </body>
