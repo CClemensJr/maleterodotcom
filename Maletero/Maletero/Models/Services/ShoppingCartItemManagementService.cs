@@ -22,18 +22,6 @@ namespace Maletero.Models.Services
         }
 
         /// <summary>
-        /// This method takes an object and Adds it to the table.
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns>An empty Task object</returns>
-        public async Task CreateCartItem(ShoppingCartItem item)
-        {
-            _table.ShoppingCartItems.Add(item);
-
-            await _table.SaveChangesAsync();
-        }
-
-        /// <summary>
         /// This method takes an id then deletes an object with the same ID from the table if it exists.
         /// </summary>
         /// <param name="id"></param>
@@ -74,14 +62,18 @@ namespace Maletero.Models.Services
         /// </summary>
         /// <param name="item"></param>
         /// <returns>An empty Task object</returns>
-        public async Task UpdateCartItem(ShoppingCartItem item)
+        public async Task SaveCartItem(ShoppingCartItem item)
         {
             if (await _table.ShoppingCartItems.FirstOrDefaultAsync(sci => sci.ID == item.ID) != null)
             {
                 _table.ShoppingCartItems.Update(item);
-
-                await _table.SaveChangesAsync();
             }
+            else
+            {
+                _table.ShoppingCartItems.Add(item);
+            }
+
+            await _table.SaveChangesAsync();
         }
     }
 }
