@@ -57,7 +57,6 @@ namespace Maletero.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
             Random rando = new Random();
