@@ -22,32 +22,6 @@ namespace Maletero.Models.Services
         }
 
         /// <summary>
-        /// This method creates an object and Adds it to the table.
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns>A Task</returns>
-        public async Task CreateCart()
-        {
-            ShoppingCart cart = new ShoppingCart();
-
-            __table.ShoppingCarts.Add(cart);
-
-            await __table.SaveChangesAsync();
-        }
-
-        /// <summary>
-        /// This method takes an object and Adds it to the table.
-        /// </summary>
-        /// <param name="item"></param>
-        /// <returns>A Task</returns>
-        public async Task CreateCart(ShoppingCart cart)
-        {
-            __table.ShoppingCarts.Add(cart);
-
-            await __table.SaveChangesAsync();
-        }
-
-        /// <summary>
         /// This method takes an id and deletes the cart from if it exhists.
         /// </summary>
         /// <param name="id"></param>
@@ -88,14 +62,18 @@ namespace Maletero.Models.Services
         /// </summary>
         /// <param name="cart"></param>
         /// <returns>A Task object</returns>
-        public async Task UpdateCart(ShoppingCart cart)
+        public async Task SaveCart(ShoppingCart cart)
         {
             if (await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.ID == cart.ID) != null)
             {
                 __table.ShoppingCarts.Update(cart);
-
-                await __table.SaveChangesAsync();
             }
+            else
+            {
+                __table.ShoppingCarts.Add(cart);
+            }
+
+            await __table.SaveChangesAsync();
         }
     }
 }
