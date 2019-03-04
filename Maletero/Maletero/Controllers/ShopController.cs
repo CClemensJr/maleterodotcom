@@ -65,7 +65,10 @@ namespace Maletero.Controllers
 
             if (product != null)
             {
-                ShoppingCart cart = _cart.GetCart(User.Iden)
+                var user = await _userManager.GetUserAsync(User);
+                var userEmail = user.Email;
+
+                ShoppingCart cart = _cart.GetCart(userEmail);
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
