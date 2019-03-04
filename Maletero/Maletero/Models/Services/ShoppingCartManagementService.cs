@@ -43,9 +43,9 @@ namespace Maletero.Models.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns>A Cart object</returns>
-        public async Task<ShoppingCart> GetCart(int id)
+        public async Task<ShoppingCart> GetCart(string userName)
         {
-            return await __table.ShoppingCarts.FindAsync(id);
+            return await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.UserID == userName);
         }
 
         /// <summary>

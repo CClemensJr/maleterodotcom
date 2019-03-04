@@ -1,4 +1,5 @@
 ﻿using Maletero.Models;
+using Maletero.Models.Interfaces;
 using Maletero.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -19,17 +20,19 @@ namespace Maletero.Controllers
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
         private IEmailSender _emailSender;
+        private IShoppingCartManager _shoppingCartManager;
 
         /// <summary>
         /// This custom constructer assigns the values of an object at create to the class properties
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender, IShoppingCartManager shoppingCartManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _shoppingCartManager = shoppingCartManager;
         }
 
         /// <summary>
@@ -57,6 +60,11 @@ namespace Maletero.Controllers
                     LastName = register.LastName,
                     Birthday = register.Birthday,
                     State = register.State
+                };
+
+                ShoppingCart cart = new ShoppingCart()
+                {
+                    UserID = user.UserName
                 };
 
                 var result = await _userManager.CreateAsync(user, register.Password);
@@ -88,6 +96,8 @@ namespace Maletero.Controllers
 
                     var ourUser = await _userManager.FindByEmailAsync(register.Email);
                     string id = ourUser.Id;
+
+                    await _shoppingCartManager.SaveCart(cart);
 
                     return RedirectToAction("Index", "Home");
                 }
@@ -218,6 +228,13 @@ namespace Maletero.Controllers
                     FirstName = elvm.FirstName,
                     LastName = elvm.LastName
                 };
+
+                //create a cart
+                ShoppingCart cart = new ShoppingCart()
+                {
+                    UserID = user.UserName
+                };
+
                 var result = await _userManager.CreateAsync(user);
                 
                 if(result.Succeeded)
@@ -228,6 +245,7 @@ namespace Maletero.Controllers
                     List<Claim> allClaims = new List<Claim> { fullNameClaim, emailClaim };
 
                     await _userManager.AddClaimsAsync(user, allClaims);
+                    await _shoppingCartManager.SaveCart(cart);
 
                     result = await _userManager.AddLoginAsync(user, info);
 
