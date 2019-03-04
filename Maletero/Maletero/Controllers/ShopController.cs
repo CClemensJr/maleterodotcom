@@ -1,6 +1,7 @@
 ﻿using Maletero.Models;
 using Maletero.Models.Interfaces;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace Maletero.Controllers
     [Authorize(Policy = "WashingtonStateOnly")]
     public class ShopController : Controller
     {
+        private UserManager<ApplicationUser> _userManager;
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
@@ -59,13 +61,14 @@ namespace Maletero.Controllers
         [Authorize]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
+            var user = _userManager.GetUserId(User);
             Product product = await _inventory.GetbyID(id);
 
             if (product != null)
             {
                 ShoppingCart cart = new ShoppingCart();
 
-                cart.UserID = "test1@test.com";
+                cart.UserID = User.Identities.;
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
