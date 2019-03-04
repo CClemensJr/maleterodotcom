@@ -84,9 +84,9 @@ namespace Maletero.Controllers
                     sb.Append("<p>Thank you for registering with Maletero");
                     sb.AppendLine("Here you will find the best quality travel bags for all occasions</p");
 
-                    await _emailSender.SendEmailAsync(user.Email, "Thanks for registering", sb.ToString());
+                    await _emailSender.SendEmailAsync(register.Email, "Thanks for registering", sb.ToString());
 
-                    var ourUser = await _userManager.FindByEmailAsync(user.Email);
+                    var ourUser = await _userManager.FindByEmailAsync(register.Email);
                     string id = ourUser.Id;
 
                     return RedirectToAction("Index", "Home");
