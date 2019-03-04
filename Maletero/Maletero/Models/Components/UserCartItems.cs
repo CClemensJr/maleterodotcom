@@ -22,7 +22,7 @@ namespace Maletero.Models.Components
         public async Task<IViewComponentResult> InvokeAsync(string userName)
         {
             var cart = await _shoppingCartManager.GetCart(userName);
-            var items = await _shoppingCartItemManager.G
+            var items = await _shoppingCartItemManager.GetItemsForSpecificCart(cart.ID);
             return View(items);
         }
     }
