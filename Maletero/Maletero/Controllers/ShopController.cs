@@ -58,9 +58,10 @@ namespace Maletero.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
-        [Authorize]
+        [AllowAnonymous]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
+            Random rando = new Random();
             var user = _userManager.GetUserId(User);
             Product product = await _inventory.GetbyID(id);
 
@@ -68,7 +69,8 @@ namespace Maletero.Controllers
             {
                 ShoppingCart cart = new ShoppingCart();
 
-                cart.UserID = User.Identities.;
+                
+                cart.UserID = $"test{ rando.Next(100) }@test.com";
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
