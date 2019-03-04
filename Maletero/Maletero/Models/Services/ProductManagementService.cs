@@ -42,7 +42,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// THis method finds an object in the db with the associated ID and returns it
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">product id</param>
         /// <returns>A Product object</returns>
         public async Task<Product> GetbyID(int id)
         {

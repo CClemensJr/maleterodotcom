@@ -21,13 +21,13 @@
         <nav class="navbar navbar-dark bg-dark">
             <a href="/Home" class="navbar-brand">HOME</a>
             <a href="/Shop" class="navbar-brand">SHOP</a>
-            <a href="/" class="navbar-brand">Nav Item</a>
-            <a href="/" class="navbar-brand">Nav Item</a>
+            <a href="/Cart" class="navbar-brand">CART</a>
             <a href="/" class="navbar-brand">Nav Item</a>
             <div>
                 @if (signInManager.IsSignedIn(User))
                 {
                     <span>Welcome to Maletero, @User.Claims.First(c => c.Type == "FullName").Value!</span>
+                    <a href="/Account/Logout">Logout</a>
                 }
                 else
                 {
