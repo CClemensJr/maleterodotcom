@@ -245,6 +245,7 @@ namespace Maletero.Controllers
                     List<Claim> allClaims = new List<Claim> { fullNameClaim, emailClaim };
 
                     await _userManager.AddClaimsAsync(user, allClaims);
+                    await _shoppingCartManager.SaveCart(cart);
 
                     result = await _userManager.AddLoginAsync(user, info);
 
