@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace Maletero.Controllers
 {
-    [Authorize(Policy = "WashingtonStateOnly")]
     public class ShopController : Controller
     {
         private readonly IInventory _inventory;
@@ -60,7 +59,7 @@ namespace Maletero.Controllers
         /// <returns></returns>
         [HttpPost]
         [Authorize]
-        public async Task<RedirectToActionResult> AddToCart(int id)
+        public async Task<IActionResult> AddToCart(int id)
         {
             Product product = await _inventory.GetbyID(id);
 
@@ -87,7 +86,7 @@ namespace Maletero.Controllers
         /// This method renders the View for authorized logged in users
         /// </summary>
         /// <returns>A View</returns>
-        [Authorize]
+        [Authorize(Policy = "WashingtonStateOnly")]
         public IActionResult SeahawkBags()
         {
             return View();
