@@ -87,28 +87,28 @@ namespace Maletero.Data
                 {
                     ID = 8,
                     SKU = "abc-8",
-                    Name = "ProductEightName",
-                    Price = 80.00m,
-                    Description = "ProducttEightDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Tote",
+                    Price = 2.00m,
+                    Description = "women's brown and red leather tote bag",
+                    Image = "https://images.unsplash.com/photo-1525708570275-58d59ffe4a93?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
                 },
                 new Product
                 {
                     ID = 9,
                     SKU = "abc-9",
-                    Name = "ProductNineName",
-                    Price = 90.00m,
-                    Description = "ProductNineDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Sling Bag",
+                    Price = 3.00m,
+                    Description = "Roud woven brown sling bag",
+                    Image = "https://images.unsplash.com/photo-1527430203327-e97f64c96a2c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 },
                 new Product
                 {
                     ID = 10,
                     SKU = "abc-10",
-                    Name = "ProductTenName",
-                    Price = 100.00m,
-                    Description = "ProductTenDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Elephant Bag",
+                    Price = 1.00m,
+                    Description = "Woven tote bag with red embroidered elephant",
+                    Image = "https://images.unsplash.com/photo-1494578151111-d35ec4c84e2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1052&q=80"
                 }
                 );
         }
