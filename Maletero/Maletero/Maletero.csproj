@@ -16,4 +16,8 @@
     <PackageReference Include="Sendgrid" Version="9.10.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Views\Shared\Components\" />
+  </ItemGroup>
+
 </Project>
