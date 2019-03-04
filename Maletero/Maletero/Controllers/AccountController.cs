@@ -228,6 +228,13 @@ namespace Maletero.Controllers
                     FirstName = elvm.FirstName,
                     LastName = elvm.LastName
                 };
+
+                //create a cart
+                ShoppingCart cart = new ShoppingCart()
+                {
+                    UserID = user.UserName
+                };
+
                 var result = await _userManager.CreateAsync(user);
                 
                 if(result.Succeeded)
