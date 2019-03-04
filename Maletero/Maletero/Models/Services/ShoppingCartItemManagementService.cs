@@ -75,5 +75,10 @@ namespace Maletero.Models.Services
 
             await _table.SaveChangesAsync();
         }
+
+        public async Task<IEnumerable<ShoppingCartItem>> GetItemsForSpecificCart(int cartId)
+        {
+            return await _table.ShoppingCartItems.Where(c => c.ShoppingCartID == cartId).ToListAsync();        
+        }
     }
 }

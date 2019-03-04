@@ -1,4 +1,5 @@
 ﻿using Maletero.Data;
+using Maletero.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -9,17 +10,19 @@ namespace Maletero.Models.Components
 {
     public class UserCartItems : ViewComponent
     {
-        //may need to change to different db for user cart
-        private MaleteroDbContext _context;
+        private IShoppingCartItemManager _shoppingCartItemManager;
+        private IShoppingCartManager _shoppingCartManager;
 
-        public UserCartItems(MaleteroDbContext context)
+        public UserCartItems(IShoppingCartManager shoppingCartManager, IShoppingCartItemManager shoppingCartItemManager )
         {
-            _context = context;
+            _shoppingCartItemManager = shoppingCartItemManager;
+            _shoppingCartManager = shoppingCartManager;
         }
 
-        public async Task<IViewComponentResult> InvokeAsync(int number)
+        public async Task<IViewComponentResult> InvokeAsync(string userName)
         {
-            var items = _context.Products.OrderByDescending(p => p.ID).Take(number).ToList();
+            var cart = await _shoppingCartManager.GetCart(userName);
+            var items = await _shoppingCartItemManager.G
             return View(items);
         }
     }

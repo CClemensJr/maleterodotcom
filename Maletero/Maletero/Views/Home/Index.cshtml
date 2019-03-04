@@ -1,11 +1,15 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using Maletero.Models
+@inject SignInManager<ApplicationUser> signInManager
+
+@{
     Layout = "_Layout";
 }
 @*<div class="homelinks">
-    <a href="/Account/Login">Login</a>
-    <a href="/Account/Register">Register</a>
-    <a href="/Account/Logout">Logout</a>
-</div>*@
+        <a href="/Account/Login">Login</a>
+        <a href="/Account/Register">Register</a>
+        <a href="/Account/Logout">Logout</a>
+    </div>*@
 
 <body>
     <img src="https://images.unsplash.com/photo-1421218108559-eb1ff78357f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1190&q=80" />
@@ -63,4 +67,9 @@
 
     </div>
     <!--/.Carousel Wrapper-->
+
+    @if (signInManager.IsSignedIn(User))
+    {
+        @await Component.InvokeAsync("UserCartItems", new { User.Identity.Name });
+    }
 </body>

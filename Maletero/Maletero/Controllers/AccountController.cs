@@ -89,7 +89,7 @@ namespace Maletero.Controllers
                     //email confirmation upon registration
                     StringBuilder sb = new StringBuilder();
 
-                    sb.Append("<p>Thank you for registering with Maletero");
+                    sb.Append("<p>Thank you for registering with Maletero.  ");
                     sb.AppendLine("Here you will find the best quality travel bags for all occasions</p");
 
                     await _emailSender.SendEmailAsync(register.Email, "Thanks for registering", sb.ToString());
