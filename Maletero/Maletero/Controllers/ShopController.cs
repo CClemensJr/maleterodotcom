@@ -62,6 +62,7 @@ namespace Maletero.Controllers
                 ShoppingCart cart = new ShoppingCart();
 
                 cart.UserID = "test@test.com";
+                await _cart.CreateCart(cart);
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
@@ -69,8 +70,7 @@ namespace Maletero.Controllers
 
                 cart.ShoppingCartItems.Add(cartItem);
 
-                await _cart.CreateCart(cart);
-                // await _cart.UpdateCart(shoppingCart);
+                await _cart.UpdateCart(cart);
             }
 
             return RedirectToAction("Index");
