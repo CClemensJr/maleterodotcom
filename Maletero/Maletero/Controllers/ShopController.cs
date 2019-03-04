@@ -16,16 +16,18 @@ namespace Maletero.Controllers
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
+        private UserManager<ApplicationUser> _userManager;
 
         /// <summary>
         /// This custom constructor is used to bring in the Inventory interface
         /// </summary>
         /// <param name="inventory"></param>
-        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem)
+        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem, UserManager<ApplicationUser> userManager)
         {
             _inventory = inventory;
             _cart = shoppingCart;
             _cartItem = shoppingCartItem;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -59,16 +61,11 @@ namespace Maletero.Controllers
         [HttpPost]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
-            Random rando = new Random();
-
             Product product = await _inventory.GetbyID(id);
 
             if (product != null)
             {
-                ShoppingCart cart = new ShoppingCart();
-
-                
-                cart.UserID = $"test{ rando.Next(100) }@test.com";
+                ShoppingCart cart = _cart.GetCart(User.Iden)
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
