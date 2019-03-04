@@ -10,22 +10,23 @@ using System.Threading.Tasks;
 
 namespace Maletero.Controllers
 {
-    [Authorize(Policy = "WashingtonStateOnly")]
     public class ShopController : Controller
     {
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
+        private UserManager<ApplicationUser> _userManager;
 
         /// <summary>
         /// This custom constructor is used to bring in the Inventory interface
         /// </summary>
         /// <param name="inventory"></param>
-        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem)
+        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem, UserManager<ApplicationUser> userManager)
         {
             _inventory = inventory;
             _cart = shoppingCart;
             _cartItem = shoppingCartItem;
+            _userManager = userManager;
         }
 
         /// <summary>
@@ -57,19 +58,17 @@ namespace Maletero.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpPost]
-        [AllowAnonymous]
-        public async Task<RedirectToActionResult> AddToCart(int id)
+        [Authorize]
+        public async Task<IActionResult> AddToCart(int id)
         {
-            Random rando = new Random();
-
             Product product = await _inventory.GetbyID(id);
 
             if (product != null)
             {
-                ShoppingCart cart = new ShoppingCart();
+                var user = await _userManager.GetUserAsync(User);
+                var userName = user.UserName;
 
-                
-                cart.UserID = $"test{ rando.Next(100) }@test.com";
+                ShoppingCart cart = await _cart.GetCart(userName);
 
                 ShoppingCartItem cartItem = new ShoppingCartItem(cart.ID, product, 1);
 
@@ -87,7 +86,7 @@ namespace Maletero.Controllers
         /// This method renders the View for authorized logged in users
         /// </summary>
         /// <returns>A View</returns>
-        [Authorize]
+        [Authorize(Policy = "WashingtonStateOnly")]
         public IActionResult SeahawkBags()
         {
             return View();
