@@ -50,7 +50,11 @@ namespace Maletero.Controllers
             return View(await _inventory.GetbyID(id));
         }
 
-
+        /// <summary>
+        /// This method adds an item to the cart
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpPost]
         public async Task<RedirectToActionResult> AddToCart(int id)
         {
@@ -72,7 +76,6 @@ namespace Maletero.Controllers
             }
 
             return RedirectToAction("Index");
-
         }
 
         /// <summary>
