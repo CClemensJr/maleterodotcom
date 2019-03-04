@@ -1,4 +1,5 @@
 ﻿using Maletero.Models;
+using Maletero.Models.Interfaces;
 using Maletero.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -19,17 +20,19 @@ namespace Maletero.Controllers
         private UserManager<ApplicationUser> _userManager;
         private SignInManager<ApplicationUser> _signInManager;
         private IEmailSender _emailSender;
+        private IShoppingCartManager _shoppingCartManager;
 
         /// <summary>
         /// This custom constructer assigns the values of an object at create to the class properties
         /// </summary>
         /// <param name="userManager"></param>
         /// <param name="signInManager"></param>
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender)
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender, IShoppingCartManager shoppingCartManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailSender = emailSender;
+            _shoppingCartManager = shoppingCartManager;
         }
 
         /// <summary>
