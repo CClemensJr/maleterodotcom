@@ -24,64 +24,64 @@ namespace Maletero.Data
                 {
                     ID= 1,
                     SKU= "abc-1",
-                    Name = "ProductOneName",
-                    Price = 10.00m,
-                    Description = "ProductOneDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Mountaineer Backpack",
+                    Price = 1.00m,
+                    Description = "Grey and blackpack with multiple outer compartments",
+                    Image = "https://images.unsplash.com/photo-1509762774605-f07235a08f1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80"
                 },
                 new Product
                 {
                     ID = 2,
                     SKU = "abc-2",
-                    Name = "ProductTwoName",
-                    Price = 20.00m,
-                    Description = "ProductTwoDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Leather Duffle",
+                    Price = 2.00m,
+                    Description = "Brown leather duffle bag",
+                    Image = "https://images.unsplash.com/photo-1525103504173-8dc1582c7430?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1053&q=80"
                 },
                 new Product
                 {
                     ID = 3,
                     SKU = "abc-3",
-                    Name = "ProductThreeName",
-                    Price = 30.00m,
-                    Description = "ProductThreeDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Tan Duffle",
+                    Price = 3.00m,
+                    Description = "Tan waterproof duffle bag with removable shoulder strap",
+                    Image = "https://images.unsplash.com/photo-1448582649076-3981753123b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 },
                 new Product
                 {
                     ID = 4,
                     SKU = "abc-4",
-                    Name = "ProductTFourName",
-                    Price = 40.00m,
-                    Description = "ProductFourDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Unsplash Backpack",
+                    Price = 1.00m,
+                    Description = "Water-proof black backpack with adjustable straps",
+                    Image = "https://images.unsplash.com/photo-1505308144658-03c69861061a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 },
                 new Product
                 {
                     ID = 5,
                     SKU = "abc-5",
-                    Name = "ProductFiveName",
-                    Price = 50.00m,
-                    Description = "ProductTFiveDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Burgundy Convertible Bag",
+                    Price = 2.00m,
+                    Description = "Convertible carrier bag also can be used as a roller suitcase",
+                    Image = "https://images.unsplash.com/photo-1515935480894-3bab89cf8e89?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1084&q=80"
                 },
                 new Product
                 {
                     ID = 6,
                     SKU = "abc-6",
-                    Name = "ProductSixName",
-                    Price = 60.00m,
-                    Description = "ProductSixDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "laptop Bag",
+                    Price = 1.00m,
+                    Description = "Camel-colored leather laptop bag",
+                    Image = "https://images.unsplash.com/photo-1473445361085-b9a07f55608b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1084&q=80"
                 },
                 new Product
                 {
                     ID = 7,
                     SKU = "abc-7",
-                    Name = "ProductSevenName",
-                    Price = 70.00m,
-                    Description = "ProductSevenDescription",
-                    Image = "https://via.placeholder.com/150"
+                    Name = "Vintage Maleta",
+                    Price = 3.00m,
+                    Description = "Vintae suitcase with metal buckles",
+                    Image = "https://images.unsplash.com/photo-1515622472995-1a06094d2224?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
                 },
                 new Product
                 {
