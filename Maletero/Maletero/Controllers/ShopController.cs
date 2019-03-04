@@ -13,7 +13,6 @@ namespace Maletero.Controllers
     [Authorize(Policy = "WashingtonStateOnly")]
     public class ShopController : Controller
     {
-        private UserManager<ApplicationUser> _userManager;
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
