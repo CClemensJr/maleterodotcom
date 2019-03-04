@@ -3,18 +3,20 @@ using Maletero.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Maletero.Migrations
 {
     [DbContext(typeof(MaleteroDbContext))]
-    partial class MaleteroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190228165301_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
+                .HasAnnotation("ProductVersion", "2.2.0-rtm-35687")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -151,15 +153,13 @@ namespace Maletero.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ProductID");
+                    b.Property<int>("NumberOfProducts");
 
-                    b.Property<int>("Quantity");
+                    b.Property<int>("ProductID");
 
                     b.Property<int>("ShoppingCartID");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("ProductID");
 
                     b.HasIndex("ShoppingCartID");
 
@@ -168,11 +168,6 @@ namespace Maletero.Migrations
 
             modelBuilder.Entity("Maletero.Models.ShoppingCartItem", b =>
                 {
-                    b.HasOne("Maletero.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("Maletero.Models.ShoppingCart")
                         .WithMany("ShoppingCartItems")
                         .HasForeignKey("ShoppingCartID")

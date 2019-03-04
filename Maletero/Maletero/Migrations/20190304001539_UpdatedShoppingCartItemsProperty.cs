@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Maletero.Migrations.ApplicationDb
+namespace Maletero.Migrations
 {
-    public partial class testinglogin : Migration
+    public partial class UpdatedShoppingCartItemsProperty : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

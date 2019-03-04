@@ -83,7 +83,11 @@ namespace Maletero
 
             //dependency injection
             services.AddScoped<IInventory, ProductManagement>();
+            services.AddScoped<IShoppingCartManager, ShoppingCartManagementService>();
+            services.AddScoped<IShoppingCartItemManager, ShoppingCartItemManagementService>();
             services.AddTransient<ProductManagement>();
+            services.AddTransient<ShoppingCartManagementService>();
+            services.AddTransient<ShoppingCartItemManagementService>();
             services.AddScoped<IAuthorizationHandler, StateRequirement>();
             services.AddScoped<IEmailSender, EmailSender>();
         }
