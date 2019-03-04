@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace Maletero.Controllers
@@ -62,6 +63,7 @@ namespace Maletero.Controllers
 
                 if (result.Succeeded)
                 {
+
                     Claim fullNameClaim = new Claim("FullName", $"{ user.FirstName } {user.LastName }");
 
                     Claim birthDateClaim = new Claim(ClaimTypes.DateOfBirth, new DateTime(user.Birthday.Year, user.Birthday.Month, user.Birthday.Day).ToString("u"), ClaimValueTypes.DateTime);
@@ -75,6 +77,17 @@ namespace Maletero.Controllers
                     await _userManager.AddClaimsAsync(user, allClaims);
 
                     await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    //email confirmation upon registration
+                    StringBuilder sb = new StringBuilder();
+
+                    sb.Append("<p>Thank you for registering with Maletero");
+                    sb.AppendLine("Here you will find the best quality travel bags for all occasions</p");
+
+                    await _emailSender.SendEmailAsync(register.Email, "Thanks for registering", sb.ToString());
+
+                    var ourUser = await _userManager.FindByEmailAsync(register.Email);
+                    string id = ourUser.Id;
 
                     return RedirectToAction("Index", "Home");
                 }
