@@ -38,7 +38,23 @@ namespace Maletero.Models
                 expirationDate = "1020"
             };
 
+            customerAddressType billingAddress = GetAddress();
+
             return "YAY!";
+        }
+
+        private customerAddressType GetAddress()
+        {
+            customerAddressType address = new customerAddressType()
+            {
+                firstName = "Maletero",
+                lastName = "Admin",
+                address = "122 Code Fellows Ave",
+                city = "Seattle",
+                zip = "98121"
+            };
+
+            return address;
         }
     }
 }
