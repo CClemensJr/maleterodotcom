@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers.Bases;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,10 @@ namespace Maletero.Models
 
         public string Run()
         {
+            //declare use of sandbox acct
+
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
+
             return "YAY!";
         }
     }
