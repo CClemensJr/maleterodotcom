@@ -27,7 +27,11 @@ We are selling travel bags for every type of journey!  Products include: backpac
 
 ### DB Schema
 
-![database]
+![db](./Maletero/Maletero/Assets/DbSchema.JPG)
+
+### Tables
+
+The Shopping Cart table pulls in the UserID as it's foreign key.  The shopping Cart Item table has utilizes the Shopping Cart ID to form the one: many relationship.  Each Shopping cart can have many items.  Additionally, we have order and order items tables.  The order table also references the user Id so that it's specific to one user.  Order items use the product id and order id ad foreign keys.  Each order item references one product and each order has multiple items.  
 
 ### Azure Deployment
 
