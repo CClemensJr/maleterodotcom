@@ -40,15 +40,15 @@ namespace Maletero
         {
             services.AddMvc();
 
-            services.AddDbContext<MaleteroDbContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             //services.AddDbContext<MaleteroDbContext>(options =>
-            //                                         options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MaleteroDbContext>(options =>
+                                                     options.UseSqlServer(Configuration["ConnectionStrings:ProductionConnection"]));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                                                        options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
             //services.AddDbContext<ApplicationDbContext>(options =>
-            //                                            options.UseSqlServer(Configuration["ConnectionStrings:ProductionIdentityConnection"]));
+            //                                            options.UseSqlServer(Configuration["ConnectionStrings:IdentityConnection"]));
+            services.AddDbContext<ApplicationDbContext>(options =>
+                                                        options.UseSqlServer(Configuration["ConnectionStrings:ProductionIdentityConnection"]));
 
 
             services.AddIdentity<ApplicationUser, IdentityRole>()
