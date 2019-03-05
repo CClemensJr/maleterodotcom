@@ -43,6 +43,16 @@ namespace Maletero.Models
             //accept credit cards as the payment type
             paymentType paymentType = new paymentType { Item = creditCard };
 
+            //consolidate all transaction info before sending to auth.net with the following parameters
+            transactionRequestType transactionRequest = new transactionRequestType
+            {
+                transactionType = transactionTypeEnum.authCaptureTransaction.ToString(),
+                amount = 1.00m,
+                payment = paymentType,
+                billTo = billingAddress,
+                //lineItems = 
+            };
+
             return "YAY!";
         }
 
