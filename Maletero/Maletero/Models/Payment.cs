@@ -40,11 +40,20 @@ namespace Maletero.Models
 
             customerAddressType billingAddress = GetAddress();
 
+            //accept credit cards as the payment type
+            paymentType paymentType = new paymentType { Item = creditCard };
+
             return "YAY!";
         }
 
+        /// <summary>
+        /// Bring in user profile by user id
+        /// </summary>
+        /// <returns>address</returns>
         private customerAddressType GetAddress()
         {
+            //call out to user's profile info to complete address type
+
             customerAddressType address = new customerAddressType()
             {
                 firstName = "Maletero",
