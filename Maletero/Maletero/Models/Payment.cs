@@ -23,6 +23,14 @@ namespace Maletero.Models
 
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.RunEnvironment = AuthorizeNet.Environment.SANDBOX;
 
+            //define merchant info
+            ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
+            {
+                name = _configuration["AuthNetAPILogin"],
+                ItemElementName = ItemChoiceType.transactionKey,
+                Item = _configuration["AuthNetTransactionKey"]
+            };
+
             return "YAY!";
         }
     }
