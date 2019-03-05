@@ -31,6 +31,13 @@ namespace Maletero.Models
                 Item = _configuration["AuthNetTransactionKey"]
             };
 
+            //bring in credit card
+            var creditCard = new creditCardType
+            {
+                cardNumber = "4111111111111111",
+                expirationDate = "1020"
+            };
+
             return "YAY!";
         }
     }
