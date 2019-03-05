@@ -19,6 +19,16 @@ We are selling travel bags for every type of journey!  Products include: backpac
 
 * Washington State Only policy gives users who have registered as living in Washington state special access to Seahawk Bags
 
+### OAUTH Providers
+
+* Microsoft
+* Google
+* Facebook
+
+### DB Schema
+
+![database]
+
 ### Azure Deployment
 
 <https://maletero.azurewebsites.net/>
