@@ -1,4 +1,5 @@
 ﻿using AuthorizeNet.Api.Contracts.V1;
+using AuthorizeNet.Api.Controllers;
 using AuthorizeNet.Api.Controllers.Bases;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -52,6 +53,18 @@ namespace Maletero.Models
                 billTo = billingAddress,
                 //lineItems = 
             };
+
+            createTransactionRequest request = new createTransactionRequest
+            {
+                transactionRequest = transactionRequest
+            };
+
+            //call out to auth.net using request
+            var controller = new createTransactionController(request);
+           
+            //execute controller call
+            controller.Execute();
+            
 
             return "YAY!";
         }
