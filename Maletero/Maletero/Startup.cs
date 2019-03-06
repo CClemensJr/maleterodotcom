@@ -79,6 +79,7 @@ namespace Maletero
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement()));
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
             });
 
             //dependency injection
