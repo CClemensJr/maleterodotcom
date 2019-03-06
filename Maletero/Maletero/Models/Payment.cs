@@ -104,5 +104,25 @@ namespace Maletero.Models
 
             return address;
         }
+
+        private lineItemType[] GetLineItems(List<Product> products)
+        {
+            lineItemType[] lineitems = new lineItemType[products.Count];
+
+            int count = 0;
+
+            foreach(var p in products)
+            {
+                lineitems[count] = new lineItemType
+                {
+                    itemId = "1",
+                    name = "productOne",
+                    quantity = 1,
+                    unitPrice = new Decimal(1.00)
+                };
+                count++;
+            }
+            return lineitems;
+        }
     }
 }
