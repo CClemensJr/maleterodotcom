@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -20,6 +21,16 @@ namespace Maletero.Models.Components
         public Task<CreditCardNumbers> GetCreditCardAsync(string creditCard)
         {
 
+        }
+
+        public enum CreditCardProviders
+        {
+            [Display(Name = "American Express")]
+            AMEX,
+            [Display(Name = "Discover Card")]
+            Discover,
+            MasterCard,
+            Visa
         }
 
         public enum CreditCardNumbers:long
