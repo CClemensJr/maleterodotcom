@@ -3,7 +3,7 @@
 @model CreditCardDropDownViewComponent
 
 <form method="post">
-    <select asp-for="CreditCardProvider" asp-items="Html.GetEnumSelectList<CreditCardProviders>">
+    <select asp-for="GetCreditCardAsync" asp-items="Model.CreditCardProviders">
 
     </select>
     <br /><button type="submit">Register</button>
