@@ -84,6 +84,12 @@ namespace Maletero.Controllers
 
                     await _userManager.AddClaimsAsync(user, allClaims);
 
+                    //assign user to a role
+                    if(user.Email == "amanda@codefellows" || user.Email == "philip.r.werner@gmail.com")
+                    {
+                        await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
+                    }
+
                     await _signInManager.SignInAsync(user, isPersistent: false);
 
                     //email confirmation upon registration
