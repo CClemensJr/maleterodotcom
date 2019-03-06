@@ -8,11 +8,18 @@ namespace Maletero.Models.Components
 {
     public class CreditCardDropDownViewComponent : ViewComponent
     {
-        public async Task<IViewComponentResult> InvokeAsync()
-        {
-            var creditCard = await GetCardAsync();
+        public string CreditCardProvider { get; set; }
 
-            return View(creditCard);
+        public async Task<IViewComponentResult> InvokeAsync(string creditCard)
+        {
+            var creditCardNumber = await GetCreditCardAsync(creditCard);
+
+            return View(creditCardNumber);
+        }
+
+        public Task<CreditCardNumbers> GetCreditCardAsync(string creditCard)
+        {
+
         }
 
         public enum CreditCardNumbers:long
