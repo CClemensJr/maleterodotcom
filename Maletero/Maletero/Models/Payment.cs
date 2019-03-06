@@ -27,9 +27,9 @@ namespace Maletero.Models
             //define merchant info
             ApiOperationBase<ANetApiRequest, ANetApiResponse>.MerchantAuthentication = new merchantAuthenticationType()
             {
-                name = _configuration["AuthNetAPILogin"],
+                name = "98h6p9uLRKbp",
                 ItemElementName = ItemChoiceType.transactionKey,
-                Item = _configuration["AuthNetTransactionKey"]
+                Item = "6vad94bCh44E3hLq"
             };
 
             //bring in credit card
