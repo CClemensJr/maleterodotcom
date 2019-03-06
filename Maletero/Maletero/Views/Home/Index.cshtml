@@ -72,4 +72,10 @@
     {
         @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
     }
+
+    <form method="post">
+    <button type="submit">Pay</button>
+    </form>
 </body>
+
+
