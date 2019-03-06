@@ -25,5 +25,16 @@ namespace Maletero.Models
                 AddRoles(dbContext);
             }
         }
+
+        private static void AddRoles(ApplicationDbContext context)
+        {
+            if (context.Roles.Any()) return;
+
+            foreach(var role in Roles)
+            {
+                context.Roles.Add(role);
+                context.SaveChanges();
+            }
+        }
     }
 }
