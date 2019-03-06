@@ -64,9 +64,25 @@ namespace Maletero.Models
            
             //execute controller call
             controller.Execute();
-            
 
-            return "YAY!";
+            var response = controller.GetApiResponse();
+
+            if (response != null)
+            {
+                if (response.messages.resultCode == messageTypeEnum.Ok)
+                {
+                    if (response.transactionResponse != null)
+                    {
+                        return "Ok";
+                    }
+                }
+                else
+                {
+                    return "Not Ok";
+                }
+            }
+
+            return "Not Ok";
         }
 
         /// <summary>
