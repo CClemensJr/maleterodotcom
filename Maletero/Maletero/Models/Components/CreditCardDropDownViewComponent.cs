@@ -24,12 +24,12 @@ namespace Maletero.Models.Components
         {
             var creditCardNumber = await GetCreditCardAsync(creditCard);
 
-            return View(creditCardNumber);
+            return View(CreditCardProviders);
         }
 
-        public Task<CreditCardNumbers> GetCreditCardAsync(string creditCard)
+        public async Task<CreditCardNumbers> GetCreditCardAsync(string creditCard)
         {
-
+            return CreditCardNumbers.AmericanExpress;
         }
 
         //public enum CreditCardProviders
