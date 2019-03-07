@@ -85,7 +85,7 @@ namespace Maletero.Controllers
                     await _userManager.AddClaimsAsync(user, allClaims);
 
                     //assign user to a role
-                    if(user.Email == "amanda@codefellows" || user.Email == "philip.r.werner@gmail.com")
+                    if(user.Email == "amanda@codefellows" || user.Email == "philip.r.werner@gmail.com" || user.Email == "dez.teague@gmail.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                     }
