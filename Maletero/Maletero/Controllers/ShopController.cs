@@ -91,5 +91,12 @@ namespace Maletero.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Receipt()
+        {
+            return View();
+        }
     }
 }
