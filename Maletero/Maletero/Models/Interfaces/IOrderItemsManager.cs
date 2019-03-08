@@ -8,9 +8,9 @@ namespace Maletero.Models.Interfaces
     public interface IOrderItemsManager
     {
         // Get a order item
-        Task<ShoppingCart> GetOrderItem(string userName);
+        Task<Order> GetOrderItem(string userName);
 
         // Get all order items
-        Task<IEnumerable<ShoppingCart>> GetAllOrderItems();
+        Task<IEnumerable<Order>> GetAllOrderItems();
     }
 }

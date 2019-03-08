@@ -16,7 +16,7 @@ namespace Maletero.Models
         public string UserID { get; set; }
 
         [Required]
-        public List<OrderItem> OrderItems { get; set; } = null;
+        public List<ShoppingCartItem> CartItems { get; set; } = null;
 
     }
 }
