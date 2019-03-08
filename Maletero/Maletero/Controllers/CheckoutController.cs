@@ -20,6 +20,8 @@ namespace Maletero.Controllers
 
         }
 
+      
+
         public IActionResult Receipt()
         {
             return View();
