@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Maletero.Models.Interfaces
 {
-    public class IOrderItemsManager
+    public interface IOrderItemsManager
     {
         // Get a order item
         Task<ShoppingCart> GetOrderItem(string userName);

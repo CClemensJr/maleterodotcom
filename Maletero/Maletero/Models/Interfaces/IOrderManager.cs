@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace Maletero.Models.Interfaces
 {
-    public class IOrderManager
+    public interface IOrderManager 
     {
       
         // Get an order
-        Task<ShoppingCart> GetOrder(string userName);
+        Task<Order> GetOrder(string userName);
 
         // Get all orders
         Task<IEnumerable<Order>> GetAllOrders();
