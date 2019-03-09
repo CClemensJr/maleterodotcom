@@ -10,7 +10,7 @@ namespace Maletero.Models.Services
 {
     public class OrderManagementService: IOrderManager
     {
-        private MaleteroDbContext __table { get; }
+        private MaleteroDbContext _table { get; }
 
         /// <summary>
         /// This custom constructor assigns a dbcontext to the property.
@@ -18,7 +18,7 @@ namespace Maletero.Models.Services
         /// <param name="order"></param>
         public OrderManagementService(MaleteroDbContext order)
         {
-            __table = order;
+            _table = order;
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Maletero.Models.Services
         /// <returns>An order object</returns>
         public async Task<Order> GetOrder(int id)
         {
-            return await __table.Orders.FirstOrDefaultAsync(o => o.ID == id);
+            return await _table.Orders.FirstOrDefaultAsync(o => o.ID == id);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Maletero.Models.Services
         /// <returns>A list of ShoppingCart objects</returns>
         public async Task<IEnumerable<Order>> GetAllOrders()
         {
-            return await __table.Orders.ToListAsync();
+            return await _table.Orders.ToListAsync();
         }
 
         public Task CreateOrder(Order order)
