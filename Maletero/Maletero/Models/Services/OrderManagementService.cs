@@ -26,9 +26,9 @@ namespace Maletero.Models.Services
         /// </summary>
         /// <param name="id"></param>
         /// <returns>An order object</returns>
-        public async Task<Order> GetOrder(string userName)
+        public async Task<Order> GetOrder(int id)
         {
-            return await __table.Orders.FirstOrDefaultAsync(o => o.UserID == userName);
+            return await __table.Orders.FirstOrDefaultAsync(o => o.ID == id);
         }
 
         /// <summary>
@@ -38,6 +38,11 @@ namespace Maletero.Models.Services
         public async Task<IEnumerable<Order>> GetAllOrders()
         {
             return await __table.Orders.ToListAsync();
+        }
+
+        public Task CreateOrder(Order order)
+        {
+            throw new NotImplementedException();
         }
     }
 }

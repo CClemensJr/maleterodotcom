@@ -7,12 +7,13 @@ namespace Maletero.Models.Interfaces
 {
     public interface IOrderManager 
     {
+        //create an order
+        Task CreateOrder(Order order);
       
         // Get an order
-        Task<Order> GetOrder(string userName);
+        Task<Order> GetOrder(int id);
 
         // Get all orders
         Task<IEnumerable<Order>> GetAllOrders();
-
     }
 }
