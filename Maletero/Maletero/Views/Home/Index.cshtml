@@ -22,9 +22,9 @@
 
         <!--Controls-->
         @*<div class="controls-top">
-            <a class="black-text" href="#multi-item-example" data-slide="prev"><i class="fas fa-angle-left fa-3x pr-3"></i></a>
-            <a class="black-text" href="#multi-item-example" data-slide="next"><i class="fas fa-angle-right fa-3x pl-3"></i></a>
-        </div>*@
+                <a class="black-text" href="#multi-item-example" data-slide="prev"><i class="fas fa-angle-left fa-3x pr-3"></i></a>
+                <a class="black-text" href="#multi-item-example" data-slide="next"><i class="fas fa-angle-right fa-3x pl-3"></i></a>
+            </div>*@
         <!--/.Controls-->
         <!--Slides-->
         <div class="carousel-inner" role="listbox">
@@ -72,9 +72,16 @@
     {
         @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
     }
-
     <form method="post">
-    <button type="submit">Pay</button>
+        <select>
+            <option value="370000000000002">American Express</option>
+            <option value="6011000000000012">Discover</option>
+            <option value="4007000000027">Visa</option>
+            <option value="5424000000000015">Mastercard</option>
+        </select>
+    </form>
+    <form method="post">
+        <button type="submit">Pay</button>
     </form>
 </body>
 
