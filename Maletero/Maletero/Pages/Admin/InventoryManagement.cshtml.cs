@@ -62,7 +62,7 @@ namespace Maletero.Pages.Admin
         /// <returns>home page</returns>
         public async Task<IActionResult> OnPostDelete()
         {
-            await _product.DeleteAsync(ID.Value);
+            await _product.DeleteAsync(ID);
             return RedirectToPage("/Index");
         }
     }

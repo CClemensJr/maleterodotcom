@@ -22,10 +22,12 @@ namespace Maletero.Models.Interfaces
 
         //delete
 
-        Task DeleteProduct(int id);
+        //Task DeleteProduct(int id);
 
         bool ProductExists(int id);
 
         Task SaveAsync(Product product);
+
+        Task DeleteAsync(int id);
     }
 }

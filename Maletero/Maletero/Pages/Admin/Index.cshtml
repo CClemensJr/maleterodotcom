@@ -23,10 +23,11 @@
     {
     <div class="post-item">
         <img src="@item.Image">
+        <p>ID: @item.ID</p>
         <p>SKU: @item.SKU</p>
         <p>Name: @item.Name</p>
         <p>Price: @item.Price</p>
-        <a class="btn btn-primary" role="button" asp-page="/Admin/InventoryManagement" asp-route-id="@Model.Product">Edit</a>
+        <form><button asp-page="/Admin/InventoryManagement" asp-route-id="@item.ID">Edit</button></form>
     </div>
     }
 </div>
