@@ -13,6 +13,12 @@ namespace Maletero.Pages.Profile
     {
         private UserManager<ApplicationUser> _userManager;
 
+        public IndexModel (UserManager<ApplicationUser> userManager)
+        {
+            _userManager = userManager;
+        }
+          
+
         public void OnGet()
         {
         }
