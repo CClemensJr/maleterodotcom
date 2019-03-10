@@ -4,11 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Maletero.Models;
 using Maletero.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Maletero.Pages.Admin
 {
+    [Authorize(Policy = "AdminOnly")]
     public class IndexModel : PageModel
     {
         private readonly IInventory _product;
