@@ -9,6 +9,8 @@ namespace Maletero.Pages.Profile
 {
     public class IndexModel : PageModel
     {
+        private UserManager<ApplicationUser> _userManager;
+
         public void OnGet()
         {
         }
