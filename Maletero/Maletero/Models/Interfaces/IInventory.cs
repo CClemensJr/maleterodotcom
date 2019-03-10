@@ -25,5 +25,7 @@ namespace Maletero.Models.Interfaces
         Task DeleteProduct(int id);
 
         bool ProductExists(int id);
+
+        Task SaveAsync(Product product);
     }
 }

@@ -23,8 +23,9 @@
     {
     <div class="post-item">
         <img src="@item.Image">
-        <p>@item.Name</p>
-        <p>@item.Price</p>
+        <p>SKU: @item.SKU</p>
+        <p>Name: @item.Name</p>
+        <p>Price: @item.Price</p>
         <a class="btn btn-primary" role="button" asp-page="/Admin/InventoryManagement" asp-route-id="@Model.Product">Edit</a>
     </div>
     }

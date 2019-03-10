@@ -8,9 +8,21 @@
 <div class="post-container">
     <div class="post-item">
         <form method="post">
+            <p><strong>Title</strong></p>
             <div>
-                <label asp-for="Product.Name">Name</label>
-                <input asp-for="Product.Name" />
+                @*<label asp-for="Post.Title"></label>*@
+                <input asp-for="Post.Title" />
+            </div>
+            <p><strong>Caption</strong></p>
+            <div>
+                @*<label asp-for="Post.Caption"></label>*@
+                <textarea rows="5" cols="25" asp-for="Post.Caption"></textarea>
+            </div>
+
+            <p><strong>By</strong></p>
+            <div>
+                @*<label asp-for="Post.Username">By:</label>*@
+                <input asp-for="Post.Username" />
             </div>
             <br />
             <div>
