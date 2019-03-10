@@ -1,32 +1,33 @@
-﻿@page "{id?}"
-
+﻿@page "{id}"
+@model Maletero.Pages.Admin.IndexModel;
 @{
     ViewData["Title"] = "Manage";
     Layout = "_Layout";
 }
+<p>Inventory</p>
 
+@using Maletero.Models.Interfaces
+
+@inject IInventory ProductManagementService
+
+@{
+    Layout = "_Layout";
+}
+
+@{
+    //posts is equal to list of posts returned by the service
+    var products = await ProductManagementService.GetAll();
+}
 <div class="post-container">
+    @foreach (var item in products)
+    {
     <div class="post-item">
-        <form method="post">
-            <div>
-                @*<label asp-for="Post.Title"></label>*@
-                <input asp-for="Post.Title" />
-            </div>
-            <div>
-                @*<label asp-for="Post.Caption"></label>*@
-                <textarea rows="5" cols="25" asp-for="Post.Caption"></textarea>
-            </div>
-            <div>
-                @*<label asp-for="Post.Username">By:</label>*@
-                <input asp-for="Post.Username" />
-            </div>
-            <br />
-            <div>
-                <button type="submit" class="btn btn-primary">save</button>
-                <button type="submit" class="btn btn-danger" asp-page-handler="Delete">delete</button>
-            </div>
-        </form>
+        <img src="@item.Image">
+        <p>@item.Name</p>
+        <p>@item.Price</p>
+        <a class="btn btn-primary" role="button" asp-page="/Admin/InventoryManagement" asp-route-id="@Model.Product">Edit</a>
     </div>
+    }
 </div>
 <p>orders</p>
 
