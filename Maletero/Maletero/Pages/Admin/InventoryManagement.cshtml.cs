@@ -16,6 +16,7 @@ namespace Maletero.Pages.Admin
         [FromRoute]
         public int ID { get; set; }
 
+        [BindProperty]
         public Product Product { get; set; }
 
         public InventoryManagementModel(IInventory product)
@@ -50,6 +51,7 @@ namespace Maletero.Pages.Admin
             prod.Name = prod.Name;
             prod.Price = prod.Price;
 
+            await _product.UpdateProduct(prod);
             //save the post to the db
             await _product.SaveAsync(prod);
 

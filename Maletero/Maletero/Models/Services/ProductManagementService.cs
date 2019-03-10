@@ -62,9 +62,10 @@ namespace Maletero.Models.Services
             throw new NotImplementedException();
         }
 
-        public async Task UpdateProduct(Product id)
+        public async Task UpdateProduct(Product product)
         {
-            throw new NotImplementedException();
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
         }
 
         public async Task SaveAsync(Product product)
