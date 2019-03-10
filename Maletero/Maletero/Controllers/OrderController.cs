@@ -12,12 +12,12 @@ namespace Maletero.Controllers
     public class OrderController: Controller
     {
         private readonly IOrderManager _order;
-        private readonly ShoppingCart _shoppingCart;
+        //private readonly IShoppingCartManager _shoppingCart;
 
-        public OrderController(IOrderManager order, ShoppingCart shoppingCart)
+        public OrderController(IOrderManager order)
         {
             _order = order;
-            _shoppingCart = shoppingCart;
+            //_shoppingCart = shoppingCart;
         }
 
         public IActionResult Checkout()

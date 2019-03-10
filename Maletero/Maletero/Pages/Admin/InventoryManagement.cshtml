@@ -1,5 +1,5 @@
 ﻿@page "{id?}"
-
+@model dotNet_gram.Pages.Posts.ManageModel
 @{
     ViewData["Title"] = "Manage";
     Layout = "_Layout";
@@ -7,15 +7,23 @@
 
 <div class="post-container">
     <div class="post-item">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
+            <div class="image-upload">
+                <label asp-for="Image"></label>
+                <input asp-for="Image" type="file" />
+            </div>
+            <p><strong>Title</strong></p>
             <div>
                 @*<label asp-for="Post.Title"></label>*@
                 <input asp-for="Post.Title" />
             </div>
+            <p><strong>Caption</strong></p>
             <div>
                 @*<label asp-for="Post.Caption"></label>*@
                 <textarea rows="5" cols="25" asp-for="Post.Caption"></textarea>
             </div>
+
+            <p><strong>By</strong></p>
             <div>
                 @*<label asp-for="Post.Username">By:</label>*@
                 <input asp-for="Post.Username" />
@@ -28,5 +36,3 @@
         </form>
     </div>
 </div>
-<p>orders</p>
-
