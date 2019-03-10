@@ -21,10 +21,13 @@ namespace Maletero.Pages.Profile
         {
             _userManager = userManager;
         }
-          
 
+        /// <summary>
+        /// This method runs on page load
+        /// </summary>
         public void OnGet()
         {
+
         }
     }
 }
