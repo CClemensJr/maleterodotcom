@@ -13,6 +13,10 @@ namespace Maletero.Pages.Profile
     {
         private UserManager<ApplicationUser> _userManager;
 
+        /// <summary>
+        /// This constructor used dependency injection to bring in the UserManager identity class
+        /// </summary>
+        /// <param name="userManager"></param>
         public IndexModel (UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
