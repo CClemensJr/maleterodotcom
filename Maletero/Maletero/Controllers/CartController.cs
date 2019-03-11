@@ -15,7 +15,7 @@ namespace Maletero.Controllers
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
-        private IConfiguration _configuration;
+        private readonly IConfiguration _configuration;
 
         /// <summary>
         /// This custom constructor is used to bring in the shoppingcart interfaces
