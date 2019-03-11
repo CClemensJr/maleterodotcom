@@ -41,6 +41,11 @@ namespace Maletero.Controllers
             return View(await _cartItem.GetAllCartItems());
         }
 
+        /// <summary>
+        /// This method Returns the view based on the payment selections
+        /// </summary>
+        /// <param name="works"></param>
+        /// <returns>A View result</returns>
         [HttpPost]
         public IActionResult Index(bool works = true)
         {
@@ -55,16 +60,6 @@ namespace Maletero.Controllers
             {
                 return View();
             }
-        }
-
-        /// <summary>
-        /// This action returns the index view
-        /// </summary>
-        /// <returns>A view object</returns>
-        [Authorize]
-        public IActionResult Index()
-        {
-            return View();
         }
     }
 }
