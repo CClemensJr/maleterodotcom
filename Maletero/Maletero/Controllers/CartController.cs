@@ -27,6 +27,10 @@ namespace Maletero.Controllers
             _cartItem = cartItem;
         }
 
+        /// <summary>
+        /// This action returns the index view
+        /// </summary>
+        /// <returns>A view object</returns>
         [Authorize]
         public IActionResult Index()
         {
