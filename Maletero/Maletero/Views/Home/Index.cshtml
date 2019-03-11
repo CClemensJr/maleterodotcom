@@ -65,22 +65,6 @@
 
     </div>
     <!--/.Carousel Wrapper-->
-
-    @if (signInManager.IsSignedIn(User))
-    {
-        @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
-    }
-    <form method="post">
-        <select>
-            <option value="370000000000002">American Express</option>
-            <option value="6011000000000012">Discover</option>
-            <option value="4007000000027">Visa</option>
-            <option value="5424000000000015">Mastercard</option>
-        </select>
-    </form>
-    <form method="post">
-        <button type="submit">Pay</button>
-    </form>
 </body>
 
 
