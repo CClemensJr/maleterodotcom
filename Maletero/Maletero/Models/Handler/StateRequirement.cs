@@ -10,7 +10,12 @@ namespace Maletero.Models.Handler
 {
     public class StateRequirement : AuthorizationHandler<StateRequirement>, IAuthorizationRequirement
     {
-
+        /// <summary>
+        /// This method handles custom claims based policy
+        /// </summary>
+        /// <param name="context">authorization handler</param>
+        /// <param name="requirement">state requirement</param>
+        /// <returns></returns>
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, StateRequirement requirement)
         {
             //req is based on state claim
