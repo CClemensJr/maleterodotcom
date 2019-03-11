@@ -14,12 +14,20 @@ namespace Maletero.Controllers
         private readonly IOrderManager _order;
         //private readonly IShoppingCartManager _shoppingCart;
 
+        /// <summary>
+        /// This method constructs an order
+        /// </summary>
+        /// <param name="order">order from cart</param>
         public OrderController(IOrderManager order)
         {
             _order = order;
             //_shoppingCart = shoppingCart;
         }
 
+        /// <summary>
+        /// This method calls for a cart checkout
+        /// </summary>
+        /// <returns>Checkout view page</returns>
         public IActionResult Checkout()
         {
             return View();
