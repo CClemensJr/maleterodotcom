@@ -1,4 +1,27 @@
 ﻿@page
 @model Maletero.Pages.Profile.IndexModel
+
 @{
+    ViewData["Title"] = "Profile";
+    Layout = "_Layout";
 }
+
+<div class="container">
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="user.Email"></label>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.FirstName"></label>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.LastName"></label>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.Birthday"></label>
+        </div>
+        <div class="form-group">
+            <label asp-for="user.State"></label>
+        </div>
+    </form>
+</div>
