@@ -13,6 +13,8 @@ namespace Maletero.Pages.Profile
     {
         private UserManager<ApplicationUser> _userManager;
 
+        public ApplicationUser ApplicationUser { get; set; }
+
         /// <summary>
         /// This constructor used dependency injection to bring in the UserManager identity class
         /// </summary>
@@ -27,7 +29,7 @@ namespace Maletero.Pages.Profile
         /// </summary>
         public async Task OnGet()
         {
-            var user = await _userManager.GetUserAsync(User);
+            ApplicationUser = await _userManager.GetUserAsync(User);
         }
     }
 }
