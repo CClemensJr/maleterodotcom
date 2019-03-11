@@ -25,8 +25,9 @@ namespace Maletero.Pages.Profile
         }
 
         /// <summary>
-        /// This method runs on page load
+        /// This method runs on page load and sends the logged in user to the view
         /// </summary>
+        /// <returns>A Task containing an ApplicationUser object</returns>
         public async Task OnGet()
         {
             ApplicationUser = await _userManager.GetUserAsync(User);
