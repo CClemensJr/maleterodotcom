@@ -32,16 +32,6 @@ namespace Maletero.Models.Components
             return CreditCardNumbers.AmericanExpress;
         }
 
-        //public enum CreditCardProviders
-        //{
-        //    [Display(Name = "American Express")]
-        //    AMEX,
-        //    [Display(Name = "Discover Card")]
-        //    Discover,
-        //    MasterCard,
-        //    Visa
-        //}
-
         public enum CreditCardNumbers:long
         {
             AmericanExpress = 370000000000002,

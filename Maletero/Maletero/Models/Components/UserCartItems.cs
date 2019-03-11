@@ -27,7 +27,7 @@ namespace Maletero.Models.Components
             //var user = await _userManager.FindByEmailAsync(userName);
             //string userID = user.Id;
             var cart = await _shoppingCartManager.GetCart(userName);
-            var items = await _shoppingCartItemManager.GetItemsForSpecificCart(cart.ID);
+            IEnumerable<ShoppingCartItem> items = await _shoppingCartItemManager.GetItemsForSpecificCart(cart.ID);
             return View(items);
         }
     }
