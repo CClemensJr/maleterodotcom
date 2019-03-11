@@ -57,7 +57,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// This method adds an item to the cart
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id"> </param>
         /// <returns></returns>
         [HttpPost]
         [Authorize]
