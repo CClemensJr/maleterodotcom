@@ -1,5 +1,6 @@
 ﻿using Maletero.Models;
 using Maletero.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,12 @@ namespace Maletero.Controllers
             _inventory = inventory;
             _cart = cart;
             _cartItem = cartItem;
+        }
+
+        [Authorize]
+        public IActionResult Index()
+        {
+            return View();
         }
     }
 }
