@@ -1,5 +1,6 @@
 ﻿using Maletero.Models;
 using Maletero.Models.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -24,6 +25,17 @@ namespace Maletero.Controllers
             _inventory = inventory;
             _cart = cart;
             _cartItem = cartItem;
+        }
+
+        /// <summary>
+        /// This method returns all items in the cart of a logged in user
+        /// </summary>
+        /// <returns>A View with a bunch of cart items</returns>
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Index()
+        {
+            return View(await _cartItem.GetAllCartItems());
         }
     }
 }
