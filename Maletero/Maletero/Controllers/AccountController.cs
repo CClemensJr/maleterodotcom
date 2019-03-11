@@ -136,7 +136,7 @@ namespace Maletero.Controllers
                     var user = await _userManager.FindByEmailAsync(login.Email);
                     if(await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
                     {
-                        return RedirectToPage("/Admin/Index");
+                        return RedirectToPage("/Index", "Admin");
                     }
 
                     return RedirectToAction("Index", "Home");
