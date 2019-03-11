@@ -33,9 +33,9 @@ namespace Maletero.Models
         /// <summary>
         /// This is a custom constructor that allows properties to be set upon instantiation
         /// </summary>
-        /// <param name="cartID"></param>
-        /// <param name="product"></param>
-        /// <param name="quantity"></param>
+        /// <param name="orderID">order id</param>
+        /// <param name="product">product object</param>
+        /// <param name="quantity">quantity of items</param>
         public OrderItem(int orderID, Product product, int quantity)
         {
             OrderID = orderID;

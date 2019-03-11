@@ -13,11 +13,19 @@ namespace Maletero.Models
     {
         private IConfiguration _configuration;
         
+        /// <summary>
+        /// This method configures payment
+        /// </summary>
+        /// <param name="configuration"></param>
         public Payment(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// this method runs payment
+        /// </summary>
+        /// <returns>returns successful or not successful payment</returns>
         public string Run()
         {
             //declare use of sandbox acct
