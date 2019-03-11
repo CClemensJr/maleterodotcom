@@ -4,14 +4,16 @@ using Maletero.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Maletero.Migrations
 {
     [DbContext(typeof(MaleteroDbContext))]
-    partial class MaleteroDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190308030632_ordertesting")]
+    partial class ordertesting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

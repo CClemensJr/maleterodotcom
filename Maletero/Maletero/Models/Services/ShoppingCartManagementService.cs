@@ -45,7 +45,8 @@ namespace Maletero.Models.Services
         /// <returns>A Cart object</returns>
         public async Task<ShoppingCart> GetCart(string userName)
         {
-            return await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.UserID == userName);
+            var cart = await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.UserID == userName);
+            return cart;
         }
 
         /// <summary>
