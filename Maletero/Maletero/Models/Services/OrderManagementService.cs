@@ -15,7 +15,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This custom constructor assigns a dbcontext to the property.
         /// </summary>
-        /// <param name="order"></param>
+        /// <param name="order">cart order data</param>
         public OrderManagementService(MaleteroDbContext order)
         {
             _table = order;
@@ -24,7 +24,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes an id and returns the cart object with that ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">order id</param>
         /// <returns>An order object</returns>
         public async Task<Order> GetOrder(int id)
         {
@@ -40,6 +40,11 @@ namespace Maletero.Models.Services
             return await _table.Orders.ToListAsync();
         }
 
+        /// <summary>
+        /// This method creates a new order
+        /// </summary>
+        /// <param name="order">order object</param>
+        /// <returns></returns>
         public Task CreateOrder(Order order)
         {
             throw new NotImplementedException();
