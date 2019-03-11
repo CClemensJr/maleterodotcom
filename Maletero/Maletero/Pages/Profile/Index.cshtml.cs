@@ -25,9 +25,9 @@ namespace Maletero.Pages.Profile
         /// <summary>
         /// This method runs on page load
         /// </summary>
-        public void OnGet()
+        public async Task OnGet()
         {
-
+            var user = await _userManager.GetUserAsync(User);
         }
     }
 }
