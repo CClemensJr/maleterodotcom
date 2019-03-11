@@ -15,18 +15,23 @@ namespace Maletero.Controllers
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
+        private readonly IOrderManager _order;
         private UserManager<ApplicationUser> _userManager;
 
         /// <summary>
         /// This custom constructor is used to bring in the Inventory interface
         /// </summary>
-        /// <param name="inventory"></param>
-        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem, UserManager<ApplicationUser> userManager)
+        /// <param name="inventory">product inventory</param>
+        /// <param name="shoppingCart">user shopping cart</param>
+        /// <param name="shoppingCartItem">items inside cart</param>
+        /// <param name="order">order from cart</param>
+        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem, UserManager<ApplicationUser> userManager, IOrderManager order)
         {
             _inventory = inventory;
             _cart = shoppingCart;
             _cartItem = shoppingCartItem;
             _userManager = userManager;
+            _order = order;
         }
 
         /// <summary>
@@ -43,8 +48,8 @@ namespace Maletero.Controllers
         /// <summary>
         /// This action takes an id and sends the user to the view page for that id
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns>A View</returns>
+        /// <param name="id">product id</param>
+        /// <returns>A View of single product</returns>
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> ShowBag(int id)
@@ -55,8 +60,8 @@ namespace Maletero.Controllers
         /// <summary>
         /// This method adds an item to the cart
         /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
+        /// <param name="id">product id</param>
+        /// <returns>Index view of cart</returns>
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> AddToCart(int id)
@@ -90,6 +95,18 @@ namespace Maletero.Controllers
         public IActionResult SeahawkBags()
         {
             return View();
+        }
+
+        /// <summary>
+        /// THis method creates a receipt based on order purchase
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>a view of the order receipt</returns>
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Receipt(int id)
+        {
+            return View(await _order.GetOrder(id));
         }
     }
 }

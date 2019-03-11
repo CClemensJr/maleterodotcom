@@ -23,16 +23,17 @@
             <a href="/Home" class="navbar-brand">HOME</a>
             <a href="/Shop" class="navbar-brand">SHOP</a>
             <a href="/Cart" class="navbar-brand">CART</a>
-            <a href="/" class="navbar-brand">Nav Item</a>
+            <a href="/Admin/Index" class="navbar-brand">ADMIN</a>
+            <a href="/Profile/Index" class="navbar-brand">ACCOUNT</a>
             <div>
                 @if (signInManager.IsSignedIn(User))
                 {
-                    <span>Welcome to Maletero, @User.Claims.First(c => c.Type == "FullName").Value!</span>
-                    <a href="/Account/Logout">Logout</a>
+                <span>Welcome to Maletero, @User.Claims.First(c => c.Type == "FullName").Value!</span>
+                <a href="/Account/Logout">Logout</a>
                 }
                 else
                 {
-                    <p>Please <a asp-controller="Account" asp-action="Login">Login</a> or <a asp-controller="Account" asp-action="Register">Register</a></p>
+                <p>Please <a asp-controller="Account" asp-action="Login">Login</a> or <a asp-controller="Account" asp-action="Register">Register</a></p>
                 }
             </div>
         </nav>

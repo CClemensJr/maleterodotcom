@@ -15,7 +15,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This custom constructor assigns a dbcontext to the property.
         /// </summary>
-        /// <param name="cartItem"></param>
+        /// <param name="cartItem">item inside user cart</param>
         public ShoppingCartItemManagementService(MaleteroDbContext cartItem)
         {
             _table = cartItem;
@@ -24,7 +24,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes an id then deletes an object with the same ID from the table if it exists.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">cart id</param>
         /// <returns>An empty Task object</returns>
         public async Task DeleteCartItem(int id)
         {
@@ -50,7 +50,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes an ID and returns the object with that ID from the table.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">cart item id</param>
         /// <returns>A Task object containing a ShoppingCartItem</returns>
         public async Task<ShoppingCartItem> GetCartItem(int id)
         {
@@ -62,7 +62,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes an item and updates the item in the db if it exists.
         /// </summary>
-        /// <param name="item"></param>
+        /// <param name="item">cart item object</param>
         /// <returns>An empty Task object</returns>
         public async Task SaveCartItem(ShoppingCartItem item)
         {
@@ -78,6 +78,11 @@ namespace Maletero.Models.Services
             await _table.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method finds items inside of a specific cart by using the cart it
+        /// </summary>
+        /// <param name="cartId">card id</param>
+        /// <returns>items in the cart</returns>
         public async Task<IEnumerable<ShoppingCartItem>> GetItemsForSpecificCart(int cartId)
         {
             var items = await _table.ShoppingCartItems.Where(c => c.ShoppingCartID == cartId).ToListAsync();   

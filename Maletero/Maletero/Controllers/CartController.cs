@@ -17,8 +17,8 @@ namespace Maletero.Controllers
         /// <summary>
         /// This custom constructor is used to bring in the shoppingcart interfaces
         /// </summary>
-        /// <param name="cart"></param>
-        /// <param name="cartItem"></param>
+        /// <param name="cart">shopping cart</param>
+        /// <param name="cartItem">shopping cart item</param>
         public CartController(IInventory inventory, IShoppingCartManager cart, IShoppingCartItemManager cartItem)
         {
             _inventory = inventory;

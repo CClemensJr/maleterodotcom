@@ -15,7 +15,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This custom constructor assigns a dbcontext to the property.
         /// </summary>
-        /// <param name="cart"></param>
+        /// <param name="cart">cart object</param>
         public ShoppingCartManagementService(MaleteroDbContext cart)
         {
             __table = cart;
@@ -24,7 +24,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes an id and deletes the cart from if it exhists.
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="id">cart id</param>
         /// <returns>A Task object</returns>
         public async Task DeleteCart(int id)
         {
@@ -41,11 +41,12 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes an id and returns the cart object with that ID
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="userName">user's email</param>
         /// <returns>A Cart object</returns>
         public async Task<ShoppingCart> GetCart(string userName)
         {
-            return await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.UserID == userName);
+            var cart = await __table.ShoppingCarts.FirstOrDefaultAsync(sc => sc.UserID == userName);
+            return cart;
         }
 
         /// <summary>
@@ -60,7 +61,7 @@ namespace Maletero.Models.Services
         /// <summary>
         /// This method takes a cart object and updates it in the database
         /// </summary>
-        /// <param name="cart"></param>
+        /// <param name="cart">cart object</param>
         /// <returns>A Task object</returns>
         public async Task SaveCart(ShoppingCart cart)
         {

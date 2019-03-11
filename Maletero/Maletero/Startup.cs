@@ -79,6 +79,7 @@ namespace Maletero
             services.AddAuthorization(options =>
             {
                 options.AddPolicy("WashingtonStateOnly", policy => policy.Requirements.Add(new StateRequirement()));
+                options.AddPolicy("AdminOnly", policy => policy.RequireRole(ApplicationRoles.Admin));
             });
 
             //dependency injection
@@ -90,6 +91,7 @@ namespace Maletero
             services.AddTransient<ShoppingCartItemManagementService>();
             services.AddScoped<IAuthorizationHandler, StateRequirement>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IOrderManager, OrderManagementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

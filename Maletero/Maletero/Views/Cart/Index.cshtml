@@ -1,0 +1,26 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using Maletero.Models
+@model IEnumerable<Maletero.Models.ShoppingCartItem>
+
+@inject SignInManager<ApplicationUser> signInManager
+
+@if (signInManager.IsSignedIn(User))
+{
+    foreach (var item in Model)
+    {
+        <p>@item.Product.Name</p>
+        <p>@item.Product.Price</p>
+    }
+}
+
+<form method="post">
+    <select>
+        <option value="370000000000002">American Express</option>
+        <option value="6011000000000012">Discover</option>
+        <option value="4007000000027">Visa</option>
+        <option value="5424000000000015">Mastercard</option>
+    </select>
+</form>
+<form method="post">
+    <button type="submit">Pay</button>
+</form>
