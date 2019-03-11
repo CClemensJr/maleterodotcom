@@ -16,7 +16,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// This custom constructor brings in the db
         /// </summary>
-        /// <param name="context"></param>
+        /// <param name="context">product inventory data</param>
         public ProductController(IInventory context)
         {
             _context = context;
@@ -25,7 +25,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// This action returns the index view
         /// </summary>
-        /// <returns>A View</returns> 
+        /// <returns>A product Index View</returns> 
         public IActionResult Index()
         {
             return View();

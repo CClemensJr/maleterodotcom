@@ -25,8 +25,8 @@ namespace Maletero.Controllers
         /// <summary>
         /// This custom constructer assigns the values of an object at create to the class properties
         /// </summary>
-        /// <param name="userManager"></param>
-        /// <param name="signInManager"></param>
+        /// <param name="userManager">identity user manager</param>
+        /// <param name="signInManager">identity sign in manager</param>
         public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, IEmailSender emailSender, IShoppingCartManager shoppingCartManager)
         {
             _userManager = userManager;
@@ -45,7 +45,7 @@ namespace Maletero.Controllers
         /// <summary>
         /// Upon form submission this assigns the form values to an ApplicationUser object if the viewmodel is valid. It then redirects to the home page
         /// </summary>
-        /// <param name="rvm"></param>
+        /// <param name="rvm">register view model</param>
         /// <returns>A view action result</returns>
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel register)
@@ -122,8 +122,8 @@ namespace Maletero.Controllers
         /// <summary>
         /// This method takes in the email and password from a form and redirects to a home page if login is valid
         /// </summary>
-        /// <param name="login"></param>
-        /// <returns>A View</returns>
+        /// <param name="login">login view model</param>
+        /// <returns>Home View Page</returns>
         [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel login)
         {
@@ -162,8 +162,8 @@ namespace Maletero.Controllers
         /// <summary>
         /// This method sends user info to the service provider
         /// </summary>
-        /// <param name="serviceprovider"></param>
-        /// <returns>grant access</returns>
+        /// <param name="serviceprovider">third party service provider</param>
+        /// <returns>grant access to login</returns>
         [HttpPost]
         public IActionResult ExternalLogin(string serviceprovider)
         {

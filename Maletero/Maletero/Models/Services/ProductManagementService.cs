@@ -25,6 +25,11 @@ namespace Maletero.Models.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// The method deletes a product based on it's id
+        /// </summary>
+        /// <param name="id">product id</param>
+        /// <returns>Saved changes in product list</returns>
         public async Task DeleteAsync(int id)
         {
             //check to see if the post exists in the db
@@ -62,12 +67,22 @@ namespace Maletero.Models.Services
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// This method updates the properties of a product
+        /// </summary>
+        /// <param name="product">product object</param>
+        /// <returns>updated product</returns>
         public async Task UpdateProduct(Product product)
         {
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
 
+        /// <summary>
+        /// This method saves changes to a product
+        /// </summary>
+        /// <param name="product">product object</param>
+        /// <returns>saved changes</returns>
         public async Task SaveAsync(Product product)
         {
             //look for the post in the db
