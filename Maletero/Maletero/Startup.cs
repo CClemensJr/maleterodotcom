@@ -91,6 +91,7 @@ namespace Maletero
             services.AddTransient<ShoppingCartItemManagementService>();
             services.AddScoped<IAuthorizationHandler, StateRequirement>();
             services.AddScoped<IEmailSender, EmailSender>();
+            services.AddScoped<IOrderManager, OrderManagementService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

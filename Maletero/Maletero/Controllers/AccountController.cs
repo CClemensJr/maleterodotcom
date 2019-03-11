@@ -85,7 +85,7 @@ namespace Maletero.Controllers
                     await _userManager.AddClaimsAsync(user, allClaims);
 
                     //assign user to a role
-                    if(user.Email == "amanda@codefellows.com" || user.Email == "philip.r.werner@gmail.com" || user.Email == "dez.teague@gmail.com")
+                    if(user.Email == "amanda@codefellows.com" || user.Email == "philip.r.werner@gmail.com" || user.Email == "dez.teague@gmail.com" || user.Email == "test@gmail.com")
                     {
                         await _userManager.AddToRoleAsync(user, ApplicationRoles.Admin);
                     }
@@ -136,7 +136,7 @@ namespace Maletero.Controllers
                     var user = await _userManager.FindByEmailAsync(login.Email);
                     if(await _userManager.IsInRoleAsync(user, ApplicationRoles.Admin))
                     {
-                        return RedirectToPage("Index", "Admin");
+                        return RedirectToPage("/Index", "Admin");
                     }
 
                     return RedirectToAction("Index", "Home");
