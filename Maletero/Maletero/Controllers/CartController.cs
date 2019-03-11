@@ -56,5 +56,15 @@ namespace Maletero.Controllers
                 return View();
             }
         }
+
+        /// <summary>
+        /// This action returns the index view
+        /// </summary>
+        /// <returns>A view object</returns>
+        [Authorize]
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }
