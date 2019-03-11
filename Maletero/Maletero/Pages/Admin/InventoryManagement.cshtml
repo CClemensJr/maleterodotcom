@@ -1,0 +1,39 @@
+﻿@page "{id}"
+@model Maletero.Pages.Admin.InventoryManagementModel;
+@{
+    ViewData["Title"] = "Manage";
+    Layout = "_Layout";
+}
+
+<h3>Manage Inventory</h3>
+<div class="post-container">
+    <div class="post-item">
+        <form method="post">
+            <div>
+                <label asp-for="Product.Image"></label>
+                <input asp-for="Product.Image" />
+            </div>
+            <div>
+                <label asp-for="Product.ID"></label>
+                <input asp-for="Product.ID" />
+            </div>
+            <div>
+                <label asp-for="Product.Name"></label>
+                <input asp-for="Product.Name" />
+            </div>
+            <div>
+                <label asp-for="Product.SKU"></label>
+                <input asp-for="Product.SKU" />
+            </div>
+            <div>
+                <label asp-for="Product.Price"></label>
+                <input asp-for="Product.Price" />
+            </div>
+            <br />
+            <div>
+                <button type="submit" class="btn btn-primary">save</button>
+                <button type="submit" class="btn btn-danger" asp-page-handler="Delete">delete</button>
+            </div>
+        </form>
+    </div>
+</div>

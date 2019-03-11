@@ -15,18 +15,20 @@ namespace Maletero.Controllers
         private readonly IInventory _inventory;
         private readonly IShoppingCartManager _cart;
         private readonly IShoppingCartItemManager _cartItem;
+        private readonly IOrderManager _order;
         private UserManager<ApplicationUser> _userManager;
 
         /// <summary>
         /// This custom constructor is used to bring in the Inventory interface
         /// </summary>
         /// <param name="inventory"></param>
-        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem, UserManager<ApplicationUser> userManager)
+        public ShopController(IInventory inventory, IShoppingCartManager shoppingCart, IShoppingCartItemManager shoppingCartItem, UserManager<ApplicationUser> userManager, IOrderManager order)
         {
             _inventory = inventory;
             _cart = shoppingCart;
             _cartItem = shoppingCartItem;
             _userManager = userManager;
+            _order = order;
         }
 
         /// <summary>
@@ -90,6 +92,13 @@ namespace Maletero.Controllers
         public IActionResult SeahawkBags()
         {
             return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> Receipt(int id)
+        {
+            return View(await _order.GetOrder(id));
         }
     }
 }
