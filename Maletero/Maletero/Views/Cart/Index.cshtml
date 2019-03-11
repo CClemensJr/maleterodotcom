@@ -1,10 +1,16 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using Maletero.Models
+@model IEnumerable<Maletero.Models.ShoppingCartItem>
+
 @inject SignInManager<ApplicationUser> signInManager
 
 @if (signInManager.IsSignedIn(User))
 {
-    @await Component.InvokeAsync("UserCartItems", new { userName = User.Identity.Name });
+    foreach (var item in Model)
+    {
+        <p>@item.Product.Name</p>
+        <p>@item.Product.Price</p>
+    }
 }
 
 <form method="post">
