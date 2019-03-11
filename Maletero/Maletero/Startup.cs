@@ -25,7 +25,7 @@ namespace Maletero
     {
         public IConfiguration Configuration { get; }
 
-        //support dependency injection 
+        //support dependency injection  
         public Startup(IConfiguration configuration)
         {
             var builder = new ConfigurationBuilder().AddEnvironmentVariables();
